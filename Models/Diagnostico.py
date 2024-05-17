@@ -1,4 +1,4 @@
-class diagnostico:
+class Diagnostico:
     def __init__(self, estado, veterinario, fecha, descripcion):
         self.estado = estado
         self.veterinario = veterinario
