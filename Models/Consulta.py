@@ -1,32 +1,27 @@
 class Consulta:
-    def __init__(
-        self,
-        detalles,
-        tratamiento,
-        diagnostico,
-        fecha,
-        mascota,
-        veterinaria,
-        estado,
-        veterinario,
-    ):
-        self.detalles = detalles
-        self.tratamiento = tratamiento
-        self.diagnostico = diagnostico
-        self.fecha = fecha
-        self.mascota = mascota
-        self.veterinaria = veterinaria
-        self.estado = estado
-        self.veterinario = veterinario
+    def __init__(self,fecha, Veterinario, descripcion, Diagnostico, veterinaria, codigo):
+        self.fecha= fecha
+        self.veterinario= Veterinario
+        self.descripcion= descripcion
+        self.diagnostico= Diagnostico
+        self.veterinaria= veterinaria
+        self.codigo= int(codigo)
 
     def __str__(self):
-        return f"Detalles: {self.detalles}, Tratamiento: {self.tratamiento}, Diagnóstico: {self.diagnostico}, Fecha: {self.fecha}, Mascota: {self.mascota}, Veterinaria: {self.veterinaria}, Estado: {self.estado}, Veterinario: {self.veterinario}."
+        return f": *)Fecha de la cosulta: {self.fecha} *)Veterinario: {self.veterinario} *)Veterinara: {self.veterinaria} *)Diagnostico: {self.diagnostico} *)Estado: {self.estado} *)Descripción: {self.descripcion} *)Codigo: {self.codigo}"
 
     def __repr__(self):
-        return f"Detalles: {self.detalles}, Tratamiento: {self.tratamiento}, Diagnóstico: {self.diagnostico}, Fecha: {self.fecha}, Mascota: {self.mascota}, Veterinaria: {self.veterinaria}, Estado: {self.estado}, Veterinario: {self.veterinario}."
+        return f": *)Fecha de la cosulta: {self.fecha} *)Veterinario: {self.veterinario} *)Veterinara: {self.veterinaria} *)Diagnostico: {self.diagnostico} *)Estado: {self.estado} *)Descripción: {self.descripcion} *)Codigo: {self.codigo}"
 
-    def Dar_baja(self):
-        pass
-
-    def Sum_consulta(self):
-        pass
+    def get_fecha(self):
+        return self.fecha
+    def get_veterinario(self):
+        return self.veterinario
+    def get_descripcion(self):
+        return self.descripcion
+    def get_diagnostico(self):
+        return self.diagnostico
+    def get_veterinaria(self):
+        return self.veterinaria
+    def get_codigo(self):
+        return self.codigo
