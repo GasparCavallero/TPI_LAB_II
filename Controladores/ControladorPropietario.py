@@ -8,7 +8,7 @@ class Controlador_Propietario:
         self._modelo = Propietario()
 
     def Buscar_Propietario(self, codigo):
-        with open("propietario.txt", "r") as file:
+        with open("Archivos\\propietario.txt", "r") as file:
             for line in file:
                 linea = line.split(",")
                 if int(linea[0]) == int(codigo):

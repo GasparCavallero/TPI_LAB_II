@@ -8,7 +8,7 @@ class Controlador_Raza:
         self._modelo = Raza()
 
     def Buscar_Raza(self, codigo):
-        with open("raza.txt", "r") as file:
+        with open("Archivos\\raza.txt", "r") as file:
             for line in file:
                 linea = line.split(",")
                 if int(linea[0]) == int(codigo):
