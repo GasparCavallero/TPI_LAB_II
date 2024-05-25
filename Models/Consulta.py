@@ -1,32 +1,65 @@
 class Consulta:
-    def __init__(
-        self,
-        detalles,
-        tratamiento,
-        diagnostico,
-        fecha,
-        mascota,
-        veterinaria,
-        estado,
-        veterinario,
-    ):
-        self.detalles = detalles
-        self.tratamiento = tratamiento
-        self.diagnostico = diagnostico
-        self.fecha = fecha
-        self.mascota = mascota
-        self.veterinaria = veterinaria
-        self.estado = estado
-        self.veterinario = veterinario
+    def __init__(self, Veterinario, descripcion, veterinaria, fecha):
+        self.__veterinario = Veterinario
+        self.__descripcion = descripcion
+        self.__veterinaria = veterinaria
+        self.__fecha = fecha
+        self.__diagnostico = ""
+        self.__estado = True
 
     def __str__(self):
-        return f"Detalles: {self.detalles}, Tratamiento: {self.tratamiento}, Diagnóstico: {self.diagnostico}, Fecha: {self.fecha}, Mascota: {self.mascota}, Veterinaria: {self.veterinaria}, Estado: {self.estado}, Veterinario: {self.veterinario}."
+        return f"""Fecha de la consulta: {self.__fecha}
+Veterinario: {self.__veterinario}
+Veterinaria: {self.__veterinaria}
+Diagnostico: {self.__diagnostico}
+Descripción: {self.__descripcion}
+Anulada: {self.__estado}"""
 
-    def __repr__(self):
-        return f"Detalles: {self.detalles}, Tratamiento: {self.tratamiento}, Diagnóstico: {self.diagnostico}, Fecha: {self.fecha}, Mascota: {self.mascota}, Veterinaria: {self.veterinaria}, Estado: {self.estado}, Veterinario: {self.veterinario}."
+    ### Get/Set
 
-    def Dar_baja(self):
-        pass
+    @property
+    def veterinario(self):
+        return self.__veterinario
+    
+    @veterinario.setter
+    def veterinario(self, Veterinario):
+        self.__veterinario = Veterinario
 
-    def Sum_consulta(self):
-        pass
+    @property
+    def diagnostico(self):
+        if self.__diagnostico: return self.__diagnostico
+        return "No hay un diagnóstico cargado"
+
+    @diagnostico.setter
+    def diagnostico(self, Diagnostico):
+        self.__diagnostico = Diagnostico
+
+    @property
+    def fecha(self):
+        return self.__fecha
+    
+    @fecha.setter
+    def fecha(self, fecha):
+        self.__fecha = fecha
+
+    @property
+    def descripcion(self):
+        return self.__descripcion
+    
+    @descripcion.setter
+    def descripcion(self, descripcion):
+        self.__descripcion = descripcion
+
+    @property
+    def veterinaria(self):
+        return self.__veterinaria
+    
+    @veterinaria.setter
+    def veterinaria(self, veterinaria):
+        self.__veterinaria = veterinaria
+    
+    def dar_alta(self):
+        self.__estado = True
+
+    def dar_baja(self):
+        self.__estado = False    

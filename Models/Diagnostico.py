@@ -1,15 +1,34 @@
 class Diagnostico:
-    def __init__(self, estado, veterinario, fecha, descripcion):
-        self.estado = estado
-        self.veterinario = veterinario
-        self.fecha = fecha
-        self.descripcion = descripcion
+    def __init__(self, fecha, descripcion):
+        self.__fecha = fecha
+        self.__descripcion = descripcion
+        self.__tratamiento = ""
 
     def __str__(self):
-        return f"Estado: {self.estado}, Veterinario: {self.veterinario}, Fecha: {self.fecha}, Descripción: {self.descripcion}."
+        return f"""Fecha: {self.__fecha}
+Descripción: {self.__descripcion}
+Tratamiento: {self.__tratamiento}"""
 
-    def __repr__(self):
-        return f"Estado: {self.estado}, Veterinario: {self.veterinario}, Fecha: {self.fecha}, Descripción: {self.descripcion}."
+    @property
+    def tratamiento(self):
+        return self.__tratamiento
 
-    def Dar_baja(self):
-        pass
+    @tratamiento.setter
+    def tratamiento(self, Tratamiento):
+        self.__tratamiento = Tratamiento
+
+    @property
+    def fecha(self):
+        return self.__fecha
+    
+    @fecha.setter
+    def fecha(self, fecha):
+        self.__fecha = fecha
+
+    @property
+    def descripcion(self):
+        return self.__descripcion
+    
+    @descripcion.setter
+    def descripcion(self, descripcion):
+        self.__descripcion = descripcion

@@ -1,11 +1,22 @@
-class Veterinario:
-    def __init__(self, estado, codigo, especialidad):
-        self.estado = estado
-        self.codigo = codigo
-        self.especialidad = especialidad
+from Persona import Persona
+
+class Veterinario(Persona):
+    def __init__(self, especialidad, nombre, apellido, fechaNac, correo):
+        super().__init__(nombre, apellido, fechaNac, correo)
+        self.__especialidad = especialidad
 
     def __str__(self):
-        return f"Estado: {self.estado}, Código: {self.codigo}, Especialidad: {self.especialidad}."
+        return f"""Nombre: {super().nombre}
+Apellido: {super().apellido}
+Fecha de nacimiento: {super().fechaNac}
+Correo: {super().correo}
+Especialidad: {self.__especialidad}"""
 
-    def __repr__(self):
-        return f"Estado: {self.estado}, Código: {self.codigo}, Especialidad: {self.especialidad}."
+    @property
+    def especialidad(self):
+        return self.especialidad
+
+    @especialidad.setter
+    def especialidad(self, especialidad):
+        self.__especialidad = especialidad
+    

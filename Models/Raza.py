@@ -1,13 +1,14 @@
 class Raza:
-    def __init__(self, nombre, codigo):
-        self.nombre = nombre
-        self.codigo = codigo
+    def __init__(self, nombre):
+        self.__nombre = nombre
 
     def __str__(self):
-        return f"Nombre: {self.nombre}, Código: {self.codigo}."
+        return f"Nombre: {self.__nombre}"
 
-    def __repr__(self):
-        return f"Nombre: {self.nombre}, Código: {self.codigo}."
-
-    def Dar_baja(self):
-        pass
+    @property
+    def nombre(self):
+        return self.__nombre
+    
+    @nombre.setter
+    def nombre(self, nombre):
+        self.__nombre = nombre

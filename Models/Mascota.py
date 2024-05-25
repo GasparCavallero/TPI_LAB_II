@@ -1,24 +1,72 @@
 class Mascota:
-    def __init__(
-        self, raza, nombre, fecha_nac, tipo_animal, propietario, estado, codigo, vacuna
-    ):
-        self.raza = raza
-        self.nombre = nombre
-        self.fecha_nac = fecha_nac
-        self.tipo_animal = tipo_animal
-        self.propietario = propietario
-        self.estado = estado
-        self.codigo = codigo
-        self.vacuna = vacuna
+    def __init__(self, Propietario, Raza, FichaMedica, nombre, fechaNac, tipoAnimal):
+        self.__propietario = Propietario
+        self.__raza = Raza
+        self.__nombre = nombre
+        self.__fechaNac = fechaNac
+        self.__fichaMedica = FichaMedica
+        self.__tipoAnimal = tipoAnimal
+        self.__estado = True
 
     def __str__(self):
-        return f"Raza: {self.raza}, Nombre: {self.nombre}, Fecha de nacimiento: {self.fecha_nac}, Tipo de animal: {self.tipo_animal}, Propietario: {self.propietario}, Estado: {self.estado}, Código: {self.codigo}, Vacuna: {self.vacuna}."
+        return f"""Propietario: {self.__propietario}
+Raza: {self.__raza}
+Nombre: {self.__nombre}
+Fecha de nacimiento: {self.__fechaNac}
+Ficha médica: {self.__fichaMedica}
+Tipo de animal: {self.__tipoAnimal}
+Estado: {self.__estado}"""
 
-    def __repr__(self):
-        return f"Raza: {self.raza}, Nombre: {self.nombre}, Fecha de nacimiento: {self.fecha_nac}, Tipo de animal: {self.tipo_animal}, Propietario: {self.propietario}, Estado: {self.estado}, Código: {self.codigo}, Vacuna: {self.vacuna}."
+    @property
+    def propietario(self):
+        return self.__propietario
 
-    def Dar_baja(self):
-        pass
+    @propietario.setter
+    def propietario(self, Propietario):
+        self.__propietario = Propietario
 
-    def Calc_edad(self):
-        pass
+    @property
+    def raza(self):
+        return self.__raza
+
+    @raza.setter
+    def raza(self, Raza):
+        self.__raza = Raza
+
+    @property
+    def fichamedica(self):
+        return self.__fichaMedica
+
+    @fichamedica.setter
+    def fichamedica(self, FichaMedica):
+        self.__fichaMedica = FichaMedica
+    
+    @property
+    def nombre(self):
+        return self.__nombre
+
+    @nombre.setter
+    def nombre(self, nombre):
+        self.__nombre = nombre
+
+    @property
+    def fechaNac(self):
+        return self.__fechaNac
+
+    @fechaNac.setter
+    def fechaNac(self, fechaNac):
+        self.__fechaNac = fechaNac
+
+    @property
+    def tipoAnimal(self):
+        return self.__tipoAnimal
+
+    @tipoAnimal.setter
+    def tipoAnimal(self, tipoAnimal):
+        self.__tipoAnimal = tipoAnimal
+
+    def dar_alta(self):
+        self.__estado = True
+
+    def dar_baja(self):
+        self.__estado = False 
