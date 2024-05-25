@@ -1,27 +1,65 @@
 class Consulta:
-    def __init__(self,fecha, Veterinario, descripcion, Diagnostico, veterinaria, codigo):
-        self.fecha= fecha
-        self.veterinario= Veterinario
-        self.descripcion= descripcion
-        self.diagnostico= Diagnostico
-        self.veterinaria= veterinaria
-        self.codigo= int(codigo)
+    def __init__(self, Veterinario, descripcion, veterinaria, fecha):
+        self.__veterinario = Veterinario
+        self.__descripcion = descripcion
+        self.__veterinaria = veterinaria
+        self.__fecha = fecha
+        self.__diagnostico = ""
+        self.__estado = True
 
     def __str__(self):
-        return f": *)Fecha de la cosulta: {self.fecha} *)Veterinario: {self.veterinario} *)Veterinara: {self.veterinaria} *)Diagnostico: {self.diagnostico} *)Estado: {self.estado} *)Descripción: {self.descripcion} *)Codigo: {self.codigo}"
+        return f"""Fecha de la consulta: {self.__fecha}
+Veterinario: {self.__veterinario}
+Veterinaria: {self.__veterinaria}
+Diagnostico: {self.__diagnostico}
+Descripción: {self.__descripcion}
+Anulada: {self.__estado}"""
 
-    def __repr__(self):
-        return f": *)Fecha de la cosulta: {self.fecha} *)Veterinario: {self.veterinario} *)Veterinara: {self.veterinaria} *)Diagnostico: {self.diagnostico} *)Estado: {self.estado} *)Descripción: {self.descripcion} *)Codigo: {self.codigo}"
+    ### Get/Set
 
-    def get_fecha(self):
-        return self.fecha
-    def get_veterinario(self):
-        return self.veterinario
-    def get_descripcion(self):
-        return self.descripcion
-    def get_diagnostico(self):
-        return self.diagnostico
-    def get_veterinaria(self):
-        return self.veterinaria
-    def get_codigo(self):
-        return self.codigo
+    @property
+    def veterinario(self):
+        return self.__veterinario
+    
+    @veterinario.setter
+    def veterinario(self, Veterinario):
+        self.__veterinario = Veterinario
+
+    @property
+    def diagnostico(self):
+        if self.__diagnostico: return self.__diagnostico
+        return "No hay un diagnóstico cargado"
+
+    @diagnostico.setter
+    def diagnostico(self, Diagnostico):
+        self.__diagnostico = Diagnostico
+
+    @property
+    def fecha(self):
+        return self.__fecha
+    
+    @fecha.setter
+    def fecha(self, fecha):
+        self.__fecha = fecha
+
+    @property
+    def descripcion(self):
+        return self.__descripcion
+    
+    @descripcion.setter
+    def descripcion(self, descripcion):
+        self.__descripcion = descripcion
+
+    @property
+    def veterinaria(self):
+        return self.__veterinaria
+    
+    @veterinaria.setter
+    def veterinaria(self, veterinaria):
+        self.__veterinaria = veterinaria
+    
+    def dar_alta(self):
+        self.__estado = True
+
+    def dar_baja(self):
+        self.__estado = False    

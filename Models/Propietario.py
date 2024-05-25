@@ -1,20 +1,18 @@
-import Persona
+from Persona import Persona
+
 class Propietario(Persona):
-    def __init__(self, estado, codigo, nombre, apellido, fecha_nac, correo, Mascotas):
-        self.estado = estado
-        self.codigo = codigo
-        self.mascotas= list[Mascotas]
+    def __init__(self, nombre, apellido, fecha_nac, correo):
+        self.__mascotas = []
         super().__init__(nombre, apellido, fecha_nac, correo)
 
     def __str__(self):
-        return f": *)Nombre: {self.nombre} *)Apellido: {self.apellido} *)Correo: {self.correo} *)Fecha de nacimieno: {self.fecha_nac} *)Estado: {self.estado} *)Codigo: {self.codigo}"
+        return f"""Nombre: {super().nombre}
+Apellido: {super().apellido}
+Fecha de nacimiento: {super().fechaNac}
+Correo: {super().correo}
+Mascotas: {self.__mascotas}"""
+    
+    def agregar_mascota(self, Mascota):
+        self.__mascotas.append(Mascota)
 
-    def __repr__(self):
-        return f": *)Nombre: {self.nombre} *)Apellido: {self.apellido} *)Correo: {self.correo} *)Fecha de nacimieno: {self.fecha_nac} *)Estado: {self.estado} *)Codigo: {self.codigo}"
-
-    def get_estado(self):
-        return self.estado
-    def get_codigo(self):
-        return self.codigo
-    def get_mascotas(self):
-        return self.mascotas
+    
