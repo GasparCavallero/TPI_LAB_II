@@ -6,16 +6,20 @@ class Controlador_Raza:
     def __init__(self):
         self._vista = Vista_Raza()
         self._modelo = Raza()
+        self.listaRazas = []
 
-    def Buscar_Raza(self, codigo):
+    def cargarRaza(self):
         with open("Archivos\\raza.txt", "r") as file:
-            for line in file:
-                linea = line.split(",")
-                if int(linea[0]) == int(codigo):
-                    self._modelo = Raza(linea[0], linea[1])
-                    self._modelo.setDatos_Raza([])
-                    return self._modelo
-        return None
+            linea = file.readlines()
+        for l in linea:
+            nombre = l.strip().split(",")
+            self.listaRazas.append(Raza(nombre))
+        return self.listaRazas
 
-    def Mostrar_Datos(self):
+    def buscarRaza(self, raza):
+        for i in self.listaRazas:
+            if i.nombre == raza:
+                return i
+
+    def mostrar_Datos(self):
         self._vista.Visualizar_Datos(self._modelo.getDatos_Raza())

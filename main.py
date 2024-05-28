@@ -1,6 +1,9 @@
 ### Import de módulos
 import os
 
+## Import Tkinter
+import tkinter
+
 ### Import de vistas
 from Vistas.VistaPersona import VistaPersona
 
