@@ -32,3 +32,6 @@ Tratamiento: {self.__tratamiento}"""
     @descripcion.setter
     def descripcion(self, descripcion):
         self.__descripcion = descripcion
+
+    def agregar_tratamiento(self, Tratamiento):
+        self.__tratamiento = Tratamiento
