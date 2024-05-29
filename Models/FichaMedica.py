@@ -1,15 +1,17 @@
 class FichaMedica:
-    def __init__(self, mascota):
+    def __init__(self, mascota,codigo):
         self.__mascota = mascota
         self.__consultas = []
         self.__vacunas = []
         self.__estado = True
+        self.__codigo= int(codigo)
 
     def __str__(self):
         return f"""Mascota: {self.__mascota}
 Consulta: {self.__consultas}
 Vacunas: {self.__vacunas}
-Estado: {self.__estado}"""
+Estado: {self.__estado}
+Codigo: {self.__codigo}"""
 
     @property
     def mascota(self):
@@ -51,4 +53,12 @@ Estado: {self.__estado}"""
         self.__estado = True
 
     def dar_baja(self):
-        self.__estado = False 
+        self.__estado = False
+
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def veterinaria(self, codigo):
+        self.__codigo = codigo
