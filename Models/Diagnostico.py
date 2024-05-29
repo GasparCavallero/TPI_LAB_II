@@ -34,7 +34,7 @@ Codigo: {self.__codigo}"""
     @descripcion.setter
     def descripcion(self, descripcion):
         self.__descripcion = descripcion
-
+        
     @property
     def codigo(self):
         return self.__codigo
@@ -42,3 +42,6 @@ Codigo: {self.__codigo}"""
     @codigo.setter
     def veterinaria(self, codigo):
         self.__codigo = codigo
+  
+    def agregar_tratamiento(self, Tratamiento):
+        self.__tratamiento = Tratamiento
