@@ -1,11 +1,10 @@
 class Mascota:
-    def __init__(self, Propietario, Raza, FichaMedica, nombre, fechaNac, tipoAnimal,codigo):
+    def __init__(self, Propietario, Raza, FichaMedica, nombre, fechaNac,codigo):
         self.__propietario = Propietario
         self.__raza = Raza
         self.__nombre = nombre
         self.__fechaNac = fechaNac
         self.__fichaMedica = FichaMedica
-        self.__tipoAnimal = tipoAnimal
         self.__estado = True
         self.__codigo= int(codigo)
 
@@ -15,7 +14,6 @@ Raza: {self.__raza}
 Nombre: {self.__nombre}
 Fecha de nacimiento: {self.__fechaNac}
 Ficha médica: {self.__fichaMedica}
-Tipo de animal: {self.__tipoAnimal}
 Estado: {self.__estado}
 Codigo: {self.__codigo}"""
 
