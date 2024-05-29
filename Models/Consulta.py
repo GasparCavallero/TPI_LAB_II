@@ -1,11 +1,12 @@
 class Consulta:
-    def __init__(self, Veterinario, descripcion, veterinaria, fecha):
+    def __init__(self, Veterinario, descripcion, veterinaria, fecha,codigo):
         self.__veterinario = Veterinario
         self.__descripcion = descripcion
         self.__veterinaria = veterinaria
         self.__fecha = fecha
         self.__diagnostico = ""
         self.__estado = True
+        self.__codigo = int(codigo)
 
     def __str__(self):
         return f"""Fecha de la consulta: {self.__fecha}
@@ -13,7 +14,8 @@ Veterinario: {self.__veterinario}
 Veterinaria: {self.__veterinaria}
 Diagnostico: {self.__diagnostico}
 Descripción: {self.__descripcion}
-Anulada: {self.__estado}"""
+Anulada: {self.__estado}
+Codigo: {self.__codigo}"""
 
     ### Get/Set
 
@@ -57,6 +59,14 @@ Anulada: {self.__estado}"""
     @veterinaria.setter
     def veterinaria(self, veterinaria):
         self.__veterinaria = veterinaria
+
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def veterinaria(self, codigo):
+        self.__codigo = codigo
     
     def dar_alta(self):
         self.__estado = True
