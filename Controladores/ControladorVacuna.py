@@ -1,11 +1,11 @@
-
 from Models.Vacuna import Vacuna
 from Vistas.Vista_Vacuna import Vista_Vacuna
 
+
 class Controlador_Vacuna:
     def __init__(self):
-        self.vista = Vista_Vacuna()
-        self.modelo = Vacuna()
+        self._vista = Vista_Vacuna()
+        self._modelo = Vacuna()
         self.listaVacunas = []
 
     def cargarVacuna(self):
