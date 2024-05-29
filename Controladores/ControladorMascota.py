@@ -4,8 +4,8 @@ from Vistas.Vista_Mascota import Vista_Mascota
 
 class Controlador_Mascota:
     def __init__(self):
-        self.vista = Vista_Mascota()
-        self.modelo = Mascota()
+        self._vista = Vista_Mascota()
+        self._modelo = Mascota()
         self.listaMascotas = []
 
     def cargarMascota(self):
