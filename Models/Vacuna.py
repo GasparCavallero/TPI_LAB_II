@@ -38,3 +38,7 @@ Codigo: {self.__codigo}"""
     @codigo.setter
     def veterinaria(self, codigo):
         self.__codigo = codigo
+
+    def ishabilitado(self):
+        if self.__estado==True:
+            return True

@@ -1,7 +1,8 @@
 class Persona():
-    def __init__(self, nombre, apellido, fechaNac, correo):
+    def __init__(self, nombre, apellido, documento, fechaNac, correo):
         self.__nombre = nombre
         self.__apellido = apellido
+        self.__documento=documento
         self.__fechaNac = fechaNac
         self.__correo = correo
         self.__estado = True
@@ -9,6 +10,7 @@ class Persona():
     def __str__(self):
         return f"""Nombre: {self.__nombre}
 Apellido: {self.__apellido}
+Documento: {self.__documento}
 Fecha de nacimiento: {self.__fechaNac}
 Correo: {self.__correo}
 Estado: {self.__estado}"""
@@ -28,6 +30,14 @@ Estado: {self.__estado}"""
     @apellido.setter
     def apellido(self, apellido):
         self.__apellido = apellido
+
+    @property
+    def documento(self):
+        return self.__documento
+
+    @documento.setter
+    def documento(self, documento):
+        self.__documento= documento
 
     @property
     def fechaNac(self):
@@ -57,4 +67,8 @@ Estado: {self.__estado}"""
         self.__estado = True
 
     def dar_baja(self):
-        self.__estado = False 
+        self.__estado = False
+
+    def ishabilitado(self):
+        if self.__estado==True:
+            return True
