@@ -1,10 +1,10 @@
 from Models.Mascota import Mascota
-from Vistas.Vista_Mascota import Vista_Mascota
+from Vistas.VistaMascota import VistaMascota
 
 
 class Controlador_Mascota:
     def __init__(self):
-        self._vista = Vista_Mascota()
+        self._vista = VistaMascota()
         self._modelo = Mascota()
         self.listaMascotas = []
 
