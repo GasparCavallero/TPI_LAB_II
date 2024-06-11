@@ -1,3 +1,3 @@
-class Vista_Consulta:
+class VistaConsulta:
     def consultar(self):
-        return'Vista Consulta'
+        return "Vista Consulta"
