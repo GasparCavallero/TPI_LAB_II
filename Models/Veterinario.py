@@ -1,9 +1,9 @@
 from Persona import Persona
 
 class Veterinario(Persona):
-    def __init__(self, especialidad, nombre, apellido, fechaNac, correo, codigo):
+    def __init__(self, matricula, nombre, apellido, fechaNac, correo, codigo):
         super().__init__(nombre, apellido, fechaNac, correo)
-        self.__especialidad = especialidad
+        self.__matricula = matricula
         self.__codigo =int(codigo)
 
     def __str__(self):
@@ -11,16 +11,16 @@ class Veterinario(Persona):
 Apellido: {super().apellido}
 Fecha de nacimiento: {super().fechaNac}
 Correo: {super().correo}
-Especialidad: {self.__especialidad}
+Especialidad: {self.__matricula}
 Codigo: {self.__codigo}"""
 
     @property
-    def especialidad(self):
-        return self.especialidad
+    def matricula(self):
+        return self.matricula
 
-    @especialidad.setter
-    def especialidad(self, especialidad):
-        self.__especialidad = especialidad
+    @matricula.setter
+    def matricula(self, matricula):
+        self.__matricula = matricula
 
     @property
     def codigo(self):

@@ -12,8 +12,8 @@ class Controlador_Raza:
         with open("Archivos\\raza.txt", "r") as file:
             linea = file.readlines()
         for l in linea:
-            nombre = l.strip().split(",")
-            self.listaRazas.append(Raza(nombre))
+            nombre, tipoAnimal, codigo = l.strip().split(",")
+            self.listaRazas.append(Raza(nombre, tipoAnimal, codigo))
         return self.listaRazas
 
     def buscarRaza(self, raza):

@@ -12,12 +12,8 @@ class Controlador_Mascota:
         with open("Archivos\\mascota.txt", "r") as file:
             linea = file.readlines()
         for l in linea:
-            Propietario, Raza, FichaMedica, nombre, fechaNac, tipoAnima = (
-                l.strip().split(",")
-            )
-            self.listaMascotas.append(
-                Mascota(Propietario, Raza, FichaMedica, nombre, fechaNac, tipoAnima)
-            )
+            Propietario, Raza, FichaMedica, nombre, fechaNac, codigo = (l.strip().split(","))
+            self.listaMascotas.append(Mascota(Propietario, Raza, FichaMedica, nombre, fechaNac, codigo))
         return self.listaMascotas
 
     def buscarMascota(self, mascota):

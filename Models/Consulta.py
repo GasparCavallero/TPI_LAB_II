@@ -2,7 +2,7 @@ class Consulta:
     def __init__(self, Veterinario, descripcion, veterinaria, fecha,codigo):
         self.__veterinario = Veterinario
         self.__descripcion = descripcion
-        self.__veterinaria = veterinaria
+        self.__veterinaria = "Vetsicor"
         self.__fecha = fecha
         self.__diagnostico = ""
         self.__estado = True
