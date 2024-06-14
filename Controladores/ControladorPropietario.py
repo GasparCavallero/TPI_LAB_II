@@ -20,8 +20,31 @@ class Controlador_Propietario:
 
     def buscarPropietario(self, propietario):
         for i in self.listaPropietarios:
-            if i.nombre == propietario:
+            if i.codigo == propietario:
                 return i
 
-    def Mostrar_Datos(self):
-        self._vista.Visualizar_Datos(self._modelo.getDatos_Propietario())
+    def agregarPropietario(self):
+        nombre = self._vista.getNombre()
+        apellido = self._vista.getApellido()
+        fecha_nac = self._vista.getFecha_nac()
+        correo = self._vista.getCorreo()
+        self.listaPropietarios.append(Propietario(nombre, apellido, fecha_nac, correo))
+
+    def anularPropietario(self, propietario):
+        for i in self.listaPropietarios:
+            if i.codigo == propietario:
+                i.estado = False
+
+    def verPropietario(self, propietario):
+        for i in self.listaPropietarios:
+            if i.codigo == propietario:
+                self._vista.mostrarPropietario()
+
+    def mostrarTodosLosPropietarios(self):
+        for i in self.listaPropietarios:
+            self._vista.mostrarPropietario(i)
+
+    def mostrarPropietariosHabilitados(self):
+        for i in self.listaPropietarios:
+            if i.estado == True:
+                self._vista.mostrarPropietario(i)
