@@ -1,5 +1,5 @@
 class Raza:
-    def __init__(self, codigo: int, nombre, tipoAnimal):
+    def __init__(self, codigo: int, nombre: str, tipoAnimal: str):
         self.__codigo = codigo
         self.__nombre = nombre
         self.__tipoAnimal = tipoAnimal
@@ -14,7 +14,7 @@ Tipo animal: {self.__tipoAnimal}"""
         return self.__codigo
 
     @codigo.setter
-    def veterinaria(self, codigo):
+    def codigo(self, codigo):
         self.__codigo = codigo
 
     @property

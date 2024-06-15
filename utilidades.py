@@ -18,7 +18,9 @@ def cargarArchivoEnLista(archivo, lista, modelo_objeto):
     with open(f"{archivo}", "r") as txt:
         for linea in txt:
             parametros = linea.strip().split(";")
-            lista.append(modelo_objeto(parametros))
+            objeto = modelo_objeto(parametros)
+            lista.append(objeto)
+            print(parametros)
 
 def convertirEstadosaBool(lista):
     for objeto in lista:
