@@ -1,5 +1,6 @@
 import tkinter as tk
 from Vistas.VistaGeneral import VistaGeneral
+from ControladorRaza import Controlador_Raza
 
 class ControladorGeneral():
     def __init__(self):
@@ -9,3 +10,6 @@ class ControladorGeneral():
         self.ventanaPrincipal.geometry("400x400")
         self.ventanaPrincipal.config(background="LightBlue4")
         self.ventanaPrincipal.mainloop()
+
+        c = Controlador_Raza()
+        print(c.buscarRaza())
