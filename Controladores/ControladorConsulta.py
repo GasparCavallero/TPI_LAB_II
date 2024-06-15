@@ -1,8 +1,8 @@
 from Models.Consulta import Consulta
-from Vistas.Vista_Consulta import Vista_Consulta
+from Vistas.VistaConsulta import VistaConsulta
 
 
 class Controlador_Consulta:
     def __init__(self):
-        self._vista = Vista_Consulta()
+        self._vista = VistaConsulta()
         self._modelo = Consulta()
