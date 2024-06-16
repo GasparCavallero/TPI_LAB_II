@@ -1,18 +1,22 @@
 from Models.Veterinario import Veterinario
-from Vistas.Vista_Veterinario import Vista_Veterinario
 
-
-class Controlador_Veterinario:
+class ControladorVeterinario:
     def __init__(self):
-        self._vista = Vista_Veterinario()
-        self._modelo = Veterinario()
-        self.listaVeterinario = []
+        self.__modelo = Veterinario
+        self.__listaVeterinarios = self.cargar_lista_veterinarios()
 
-    def cargar_veterinario(self):
-        with open("\\Archivos\\veterinario.txt", "r") as file:
-            lineas = file.readlines()
-        for i in lineas:
-            especialidad, nombre, apellido, fechaNac, correo = i.strip().split(",")
-            self.listaVeterinario.append(
-                Veterinario(especialidad, nombre, apellido, fechaNac, correo)
-            )
+    def cargar_lista_veterinarios(self):
+        lista = []
+        with open("Archivos/veterinario.txt", "r") as txt:
+            for linea in txt:
+                codigo, estado, nombre, apellido, fechaNac, correo, especialidad = linea.strip().split(";")
+                lista.append(self.__modelo(codigo, estado, nombre, apellido, fechaNac, correo, especialidad))
+        return lista
+
+    def buscarPropietario(self, propietario):
+        for i in self.listaPropietarios:
+            if i.nombre == propietario:
+                return i
+
+    def get_lista_veterinarios(self):
+        return self.__listaVeterinarios

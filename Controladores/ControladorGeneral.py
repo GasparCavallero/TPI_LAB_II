@@ -1,6 +1,14 @@
 import tkinter as tk
 from Vistas.VistaGeneral import VistaGeneral
-from .ControladorRaza import Controlador_Raza
+from .ControladorRaza import ControladorRaza
+from .ControladorVacuna import Controlador_Vacuna
+from .ControladorMascota import Controlador_Mascota
+from .ControladorPropietario import Controlador_Propietario
+from .ControladorVeterinario import ControladorVeterinario
+from .ControladorFichaMedica import ControladorFichaMedica
+from .ControladorConsulta import ControladorConsulta
+from .ControladorDiagnostico import ControladorDiagnostico
+from .ControladorTratamiento import ControladorTratamiento
 
 class ControladorGeneral():
     def __init__(self):
@@ -11,6 +19,8 @@ class ControladorGeneral():
         self.ventanaPrincipal.config(background="LightBlue4")
         self.ventanaPrincipal.mainloop()"""
 
-        c = Controlador_Raza()
-        razas = c.getListaRazas()
-        [print(c) for r in razas]
+        c = ControladorRaza()
+        c.crear_nueva_raza("hola", "test")
+        print(c.buscar_raza(2))
+        c.modificar_raza(2)
+        

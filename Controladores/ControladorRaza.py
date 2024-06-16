@@ -1,28 +1,34 @@
 from Models.Raza import Raza
-# from Vistas.Vista_Raza import Vista_Raza
 from utilidades import *
 
-class Controlador_Raza:
+class ControladorRaza:
     def __init__(self):
-        # self._vista = Vista_Raza() COMENTADO HASTA QUE EXISTA VISTA_RAZA
         self.__modelo = Raza
-        self.__listaRazas = self.cargarListaRazas()
+        self.__listaRazas = []
+        self.cargar_lista_razas()
 
-    def cargarListaRazas(self):
+    def cargar_lista_razas(self):
         with open("Archivos/raza.txt", "r") as txt:
-            lista = []
             for linea in txt:
-                codigo, nombre, tipoAnimal = linea.strip().split(";")
-                lista.append(self.__modelo(int(codigo), nombre, tipoAnimal))
-            return lista
+                codigo, tipoAnimal, nombre = linea.strip().split(";")
+                self.__listaRazas.append(self.__modelo(int(codigo), tipoAnimal, nombre))
 
-    def getListaRazas(self):
+    def get_lista_razas(self): # Returnea lista de razas 
         return self.__listaRazas
 
-    def buscarRaza(self, raza):
-        for i in self.listaRazas:
-            if i.nombre == raza:
-                return i
+    def crear_nueva_raza(self, nombre, tipoAnimal):
+        objeto = Raza(crearCodigo(self.__listaRazas), nombre, tipoAnimal)
+        self.__listaRazas.append(objeto)
 
-    def mostrar_Datos(self):
-        self._vista.Visualizar_Datos(self._modelo.getDatos_Raza())
+    def modificar_raza(self, codigo):
+        for raza in self.__listaRazas:
+            if raza.codigo == codigo:
+                tipoAnimal = input("Tipo de animal: ") # Reemplazar por llamada a vista
+                nombre = input("Nombre: ") # Reemplazar por llamada a vista
+                raza.nombre = nombre
+                raza.tipoAnimal = tipoAnimal
+
+    def buscar_raza(self, codigo): # Busca raza vía código en lista de razas
+        for raza in self.__listaRazas:
+            if raza.codigo == codigo:
+                return raza

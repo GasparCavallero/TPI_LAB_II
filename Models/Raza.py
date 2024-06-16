@@ -1,13 +1,13 @@
 class Raza:
-    def __init__(self, codigo: int, nombre: str, tipoAnimal: str):
+    def __init__(self, codigo: int, tipoAnimal: str, nombre: str):
         self.__codigo = codigo
-        self.__nombre = nombre
         self.__tipoAnimal = tipoAnimal
+        self.__nombre = nombre
 
     def __str__(self):
-        return f"""Nombre: {self.__nombre}
-        Codigo: {self.__codigo}
-Tipo animal: {self.__tipoAnimal}"""
+        return f"""Codigo: {self.__codigo}
+Tipo animal: {self.__tipoAnimal}
+Nombre: {self.__nombre}"""
 
     @property
     def codigo(self):

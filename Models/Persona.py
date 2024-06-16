@@ -1,17 +1,21 @@
 class Persona():
-    def __init__(self, nombre, apellido, fechaNac, correo):
+    def __init__(self, estado: bool, nombre, apellido, fechaNac, correo):
+        self.__estado = estado
         self.__nombre = nombre
         self.__apellido = apellido
         self.__fechaNac = fechaNac
         self.__correo = correo
-        self.__estado = True
 
     def __str__(self):
-        return f"""Nombre: {self.__nombre}
+        return f"""Estado: {self.__estado}
+Nombre: {self.__nombre}
 Apellido: {self.__apellido}
 Fecha de nacimiento: {self.__fechaNac}
-Correo: {self.__correo}
-Estado: {self.__estado}"""
+Correo: {self.__correo}"""
+
+    @property
+    def estado(self):
+        return self.__estado
 
     @property
     def nombre(self):
