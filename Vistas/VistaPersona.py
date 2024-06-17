@@ -1,15 +1,15 @@
 class VistaPersona:
-    def solicitar_nombre(self):
+    def solicitarNombre(self):
         return input("Ingrese su nombre: ")
     
-    def solicitar_apellido(self):
+    def solicitarApellido(self):
         return input("Ingrese su apellido: ")
     
-    def solicitar_fecha(self):
+    def solicitarFecha(self):
         return input("Ingrese su fecha de nacimiento: ")
     
-    def solicitar_correo(self):
+    def solicitarCorreo(self):
         return input("Ingrese un correo electrónico: ")
     
-    def mostrar_informacion(self, data):
+    def mostrarInformacion(self, data):
         return print(data)

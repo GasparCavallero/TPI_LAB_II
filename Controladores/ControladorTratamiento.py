@@ -1,5 +1,5 @@
 from Models.Tratamiento import Tratamiento
-from Vistas.Vista_Tratamiento import Vista_Tratamiento
+from Vistas.VistaTratamiento import Vista_Tratamiento
 
 
 class Controlador_Tratamiento:
