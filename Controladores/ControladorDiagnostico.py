@@ -1,10 +1,10 @@
 from Models.Diagnostico import Diagnostico
-from Vistas.Vista_Diagnostico import Vista_Diagnostico
+from Vistas.VistaDiagnostico import VistaDiagnostico
 
 
 class Controlador_Diagnostico:
     def __init__(self):
-        self._vista = Vista_Diagnostico()
+        self._vista = VistaDiagnostico()
         self._modelo = Diagnostico()
         self.listaDiagnostico = []
 

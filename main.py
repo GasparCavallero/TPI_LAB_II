@@ -7,6 +7,7 @@ from Controladores.ControladorGeneral import ControladorGeneral
 ### Main
 def main():
     ControladorGeneral()
+    VistaGeneral()
 
 if __name__ == "__main__":
     main()

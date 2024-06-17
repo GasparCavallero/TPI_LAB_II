@@ -1,8 +1,8 @@
 from Models.FichaMedica import FichaMedica
-from Vistas.Vista_FichaMedica import Vista_FichaMedica
+from Vistas.VistaFichaMedica import VistaFichaMedica
 
 
 class Controlador_FichaMedica:
     def __init__(self):
-        self._vista = Vista_FichaMedica()
+        self._vista = VistaFichaMedica()
         self._modelo = FichaMedica()
