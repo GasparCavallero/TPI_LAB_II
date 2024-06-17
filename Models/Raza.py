@@ -1,13 +1,21 @@
 class Raza:
-    def __init__(self, codigo: int, tipoAnimal: str, nombre: str):
+    def __init__(self, codigo: int, estado: bool, tipoAnimal: str, nombre: str):
         self.__codigo = codigo
+        self.__estado = estado
         self.__tipoAnimal = tipoAnimal
         self.__nombre = nombre
 
     def __str__(self):
         return f"""Codigo: {self.__codigo}
+Estado: {self.__estado}
 Tipo animal: {self.__tipoAnimal}
 Nombre: {self.__nombre}"""
+
+    def anular(self):
+        self.__estado = False
+
+    def habilitar(self):
+        self.__estado = True
 
     @property
     def codigo(self):

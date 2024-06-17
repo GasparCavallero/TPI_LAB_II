@@ -19,8 +19,11 @@ class ControladorGeneral():
         self.ventanaPrincipal.config(background="LightBlue4")
         self.ventanaPrincipal.mainloop()"""
 
-        c = ControladorRaza()
-        c.crear_nueva_raza("hola", "test")
-        print(c.buscar_raza(2))
-        c.modificar_raza(2)
+        cp = Controlador_Propietario()
+        cfm = ControladorFichaMedica()
+        c = Controlador_Mascota(cp, cfm)
+        cv = ControladorVeterinario()
+        [print(c) for c in cv.get_lista_veterinarios()]
+        cv.baja_veterinario()
+        [print(c) for c in cv.get_lista_veterinarios()]
         

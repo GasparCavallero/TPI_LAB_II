@@ -57,8 +57,8 @@ Correo: {self.__correo}"""
     def estado(self, correo):
         self.__estado = correo
 
-    def dar_alta(self):
+    def alta(self):
         self.__estado = True
 
-    def dar_baja(self):
+    def baja(self):
         self.__estado = False 

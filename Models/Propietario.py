@@ -17,7 +17,7 @@ Mascotas: {self.__listaMascotas}
 """
 
     def agregar_mascota(self, Mascota):
-        self.__mascotas.append(Mascota)
+        self.__listaMascotas.append(Mascota)
 
     @property
     def codigo(self):

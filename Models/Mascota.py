@@ -65,10 +65,10 @@ Fecha de nacimiento: {self.__fechaNac}"""
     def tipoAnimal(self, tipoAnimal):
         self.__tipoAnimal = tipoAnimal
 
-    def dar_alta(self):
+    def habilitar(self):
         self.__estado = True
 
-    def dar_baja(self):
+    def anular(self):
         self.__estado = False
 
     @property
