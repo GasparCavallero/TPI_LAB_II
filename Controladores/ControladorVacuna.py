@@ -1,46 +1,22 @@
 from Models.Vacuna import Vacuna
-from Vistas.Vista_Vacuna import Vista_Vacuna
-
 
 class Controlador_Vacuna:
     def __init__(self):
-        self._vista = Vista_Vacuna()
-        self._modelo = Vacuna()
-        self.listaVacunas = []
+        self.__modelo = Vacuna
+        self.__listaVacunas = self.cargar_lista_vacunas()
 
-    def cargarVacuna(self):
-        with open("Archivos\\vacuna.txt", "r") as file:
-            linea = file.readlines()
-        for l in linea:
-            nombre, codigo = l.strip().split(",")
-            self.listaVacunas.append(Vacuna(nombre, codigo))
-        return self.listaVacunas
+    def cargar_lista_vacunas(self):
+        lista = []
+        with open("Archivos/vacuna.txt", "r") as txt:
+            for linea in txt:
+                codigo, estado, nombre, = linea.strip().split(";")
+                lista.append(self.__modelo(int(codigo), bool(estado), nombre))
+        return lista
 
-    def buscarVacuna(self, vacuna):
-        for i in self.listaVacunas:
-            if i.codigo == vacuna:
-                return i
+    def get_lista_vacunas(self): # Returnea lista de vacunas
+        return self.__listaVacunas
 
-    def agregarVacuna(self):
-        nombre = self._vista.getNombre()
-        codigo = self._vista.getCodigo()
-        self.listaVacunas.append(Vacuna(nombre, codigo))
-
-    def anularVacuna(self, vacuna):
-        for i in self.listaVacunas:
-            if i.codigo == vacuna:
-                i.estado = False
-
-    def verVacuna(self, vacuna):
-        for i in self.listaVacunas:
-            if i.codigo == vacuna:
-                self._vista.mostrarVacuna(i)
-
-    def mostrarTodasLasVacunas(self):
-        for i in self.listaVacunas:
-            self._vista.mostrarVacuna(i)
-
-    def mostrarVacunasHabilitadas(self):
-        for i in self.listaVacunas:
-            if i.estado == True:
-                self._vista.mostrarVacuna(i)
+    def buscar_vacuna(self, vacuna): # Busca vacuna vía código en lista de vacunas
+        for vacuna in self.__listaVacunas:
+            if vacuna.nombre == vacuna:
+                return vacuna

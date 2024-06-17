@@ -1,18 +1,20 @@
-from Persona import Persona
+from .Persona import Persona
 
 class Veterinario(Persona):
-    def __init__(self, matricula,nombre, apellido, fechaNac, correo, codigo):
-        super().__init__(nombre, apellido, fechaNac, correo)
-        self.__matricula=matricula
-        self.__codigo =int(codigo)
+    def __init__(self, codigo: int, estado: bool, nombre, apellido, fechaNac, correo, especialidad):
+        super().__init__(estado, nombre, apellido, fechaNac, correo)
+        self.__especialidad = especialidad
+        self.__codigo = codigo
 
     def __str__(self):
-        return f"""Nombre: {super().nombre}
+        return f"""Codigo: {self.__codigo}
+Estado: {super().estado}
+Nombre: {super().nombre}
 Apellido: {super().apellido}
 Fecha de nacimiento: {super().fechaNac}
 Correo: {super().correo}
 Especialidad: {self.__especialidad}
-Codigo: {self.__codigo}"""
+"""
 
     @property
     def matricula(self):

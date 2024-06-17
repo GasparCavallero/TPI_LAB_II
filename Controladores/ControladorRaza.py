@@ -1,37 +1,39 @@
 from Models.Raza import Raza
-from Vistas.Vista_Raza import Vista_Raza
+from utilidades import *
 
-
-class Controlador_Raza:
+class ControladorRaza:
     def __init__(self):
-        self._vista = Vista_Raza()
-        self._modelo = Raza()
-        self.listaRazas = []
+        self.__modelo = Raza
+        self.__listaRazas = []
+        self.cargar_lista_razas()
 
-    def cargarRaza(self):
-        with open("Archivos\\raza.txt", "r") as file:
-            linea = file.readlines()
-        for l in linea:
-            nombre, tipoAnimal, codigo = l.strip().split(",")
-            self.listaRazas.append(Raza(nombre, tipoAnimal, codigo))
-        return self.listaRazas
+    def cargar_lista_razas(self):
+        with open("Archivos/raza.txt", "r") as txt:
+            for linea in txt:
+                codigo, estado, tipoAnimal, nombre = linea.strip().split(";")
+                self.__listaRazas.append(self.__modelo(int(codigo), bool(estado), tipoAnimal, nombre))
 
-    def buscarRaza(self, raza):
-        for i in self.listaRazas:
-            if i.codigo == raza:
-                return i
+    def get_lista_razas(self): # Returnea lista de razas 
+        return self.__listaRazas
 
-    def agregarRaza(self):
-        nombre = self._vista.getNombre()
-        tipoAnimal = self._vista.getTipoAnimal()
-        codigo = self._vista.getCodigo()
-        self.listaRazas.append(Raza(nombre, tipoAnimal, codigo))
+    def crear_nueva_raza(self, nombre, tipoAnimal):
+        objeto = Raza(crearCodigo(self.__listaRazas), True, nombre, tipoAnimal)
+        self.__listaRazas.append(objeto)
+        
+    def modificar_raza(self, codigo):
+        for raza in self.__listaRazas:
+            if raza.codigo == codigo:
+                tipoAnimal = input("Tipo de animal: ") # Reemplazar por llamada a vista
+                nombre = input("Nombre: ") # Reemplazar por llamada a vista
+                raza.nombre = nombre
+                raza.tipoAnimal = tipoAnimal
 
-    def verRaza(self, raza):
-        for i in self.listaRazas:
-            if i.nombre == raza:
-                return i
+    def anular_raza(self, codigo):
+        for raza in self.__listaRazas:
+            if raza.codigo == codigo:
+                raza.anular()
 
-    def verTodasLasRazas(self):
-        for i in self.listaRazas:
-            self._vista.mostrarRaza(i)
+    def buscar_raza(self, codigo): # Busca raza vía código en lista de razas
+        for raza in self.__listaRazas:
+            if raza.codigo == codigo:
+                return raza

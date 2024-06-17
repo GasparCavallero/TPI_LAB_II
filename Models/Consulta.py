@@ -1,21 +1,21 @@
 class Consulta:
-    def __init__(self, Veterinario, descripcion, veterinaria, fecha,codigo):
+    def __init__(self, codigo: int, estado: bool, Veterinario, Diagnostico, descripcion, fecha):
+        self.__codigo = codigo
+        self.__estado = estado
         self.__veterinario = Veterinario
+        self.__diagnostico = Diagnostico
+        self.__veterinaria = "Veterinaria San Pedrito"
         self.__descripcion = descripcion
-        self.__veterinaria = veterinaria
         self.__fecha = fecha
-        self.__diagnostico = ""
-        self.__estado = True
-        self.__codigo = int(codigo)
 
     def __str__(self):
-        return f"""Fecha de la consulta: {self.__fecha}
+        return f"""Codigo: {self.__codigo}
+Estado: {self.__estado}
+Fecha de la consulta: {self.__fecha}
 Veterinario: {self.__veterinario}
 Veterinaria: {self.__veterinaria}
 Diagnostico: {self.__diagnostico}
-Descripción: {self.__descripcion}
-Anulada: {self.__estado}
-Codigo: {self.__codigo}"""
+Descripción: {self.__descripcion}"""
 
     ### Get/Set
 

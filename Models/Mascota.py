@@ -1,21 +1,21 @@
 class Mascota:
-    def __init__(self, Propietario, Raza, FichaMedica, nombre, fechaNac,codigo):
+    def __init__(self, codigo: int, estado: bool, Propietario, Raza, FichaMedica, nombre, fechaNac):
+        self.__codigo = codigo
+        self.__estado = estado
         self.__propietario = Propietario
         self.__raza = Raza
+        self.__fichaMedica = FichaMedica
         self.__nombre = nombre
         self.__fechaNac = fechaNac
-        self.__fichaMedica = FichaMedica
-        self.__estado = True
-        self.__codigo= int(codigo)
-
+        
     def __str__(self):
-        return f"""Propietario: {self.__propietario}
-Raza: {self.__raza}
-Nombre: {self.__nombre}
-Fecha de nacimiento: {self.__fechaNac}
-Ficha médica: {self.__fichaMedica}
+        return f"""Codigo: {self.__codigo}
 Estado: {self.__estado}
-Codigo: {self.__codigo}"""
+Propietario: {self.__propietario}
+Raza: {self.__raza}
+Ficha médica: {self.__fichaMedica}
+Nombre: {self.__nombre}
+Fecha de nacimiento: {self.__fechaNac}"""
 
     @property
     def propietario(self):
@@ -65,10 +65,10 @@ Codigo: {self.__codigo}"""
     def tipoAnimal(self, tipoAnimal):
         self.__tipoAnimal = tipoAnimal
 
-    def dar_alta(self):
+    def habilitar(self):
         self.__estado = True
 
-    def dar_baja(self):
+    def anular(self):
         self.__estado = False
 
     @property

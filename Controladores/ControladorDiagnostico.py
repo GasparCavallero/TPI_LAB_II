@@ -1,22 +1,17 @@
 from Models.Diagnostico import Diagnostico
-from Vistas.Vista_Diagnostico import Vista_Diagnostico
 
-
-class Controlador_Diagnostico:
+class ControladorDiagnostico:
     def __init__(self):
-        self._vista = Vista_Diagnostico()
-        self._modelo = Diagnostico()
-        self.listaDiagnostico = []
+        self.__modelo = Diagnostico
+        self.__listaDiagnosticos = self.cargar_lista_diagnosticos()
 
-    def cargarDiagnostico(self):
-        with open("Archivos\\diagnostico.txt", "r") as file:
-            linea = file.readlines()
-        for l in linea:
-            fecha, descripcion, tratamiento = l.strip().split(",")
-            self.listaDiagnostico.append(Diagnostico(fecha, descripcion, tratamiento))
-        return self.listaDiagnostico
+    def cargar_lista_diagnosticos(self):
+        lista = []
+        with open("Archivos/diagnostico.txt", "r") as txt:
+            for linea in txt:
+                codigo, fecha, descripcion, Tratamiento = linea.strip().split(";")
+                lista.append(self.__modelo(int(codigo), fecha, descripcion, Tratamiento))
+        return lista
 
-    # def buscarDiagnostico(self, ):
-    #     for i in self.listaDiagnostico:
-    #         if i. == :
-    #             return i
+    def get_lista_diagnosticos(self):
+        return self.__listaDiagnosticos

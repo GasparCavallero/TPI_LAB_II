@@ -1,17 +1,22 @@
 class FichaMedica:
-    def __init__(self, mascota,codigo):
-        self.__mascota = mascota
-        self.__consultas = []
-        self.__vacunas = []
-        self.__estado = True
-        self.__codigo= int(codigo)
+    def __init__(self, codigo: int, estado: bool, Mascota, listaConsultas, listaVacunas):
+        self.__codigo = codigo
+        self.__estado = estado
+        self.__mascota = Mascota
+        self.__listaConsultas = listaConsultas
+        self.__listaVacunas = listaVacunas
 
     def __str__(self):
-        return f"""Mascota: {self.__mascota}
-Consulta: {self.__consultas}
-Vacunas: {self.__vacunas}
+        return f"""Codigo: {self.__codigo}
 Estado: {self.__estado}
-Codigo: {self.__codigo}"""
+Mascota: {self.__mascota}
+Consulta: {self.__listaConsultas}
+Vacunas: {self.__listaVacunas}
+"""
+
+    @property
+    def codigo(self):
+        return self.__codigo
 
     @property
     def mascota(self):
@@ -23,28 +28,28 @@ Codigo: {self.__codigo}"""
  
     @property
     def consultas(self):
-        return self.__consultas
+        return self.__listaConsultas
     
     @consultas.setter
     def consultas(self, consultas):
-        self.__consultas = consultas
+        self.__listaConsultas = consultas
 
     @property
     def vacunas(self):
-        return self.__vacunas
+        return self.__listaVacunas
     
     @vacunas.setter
     def vacunas(self, vacunas):
-        self.__vacunas = vacunas
+        self.__listaVacunas = vacunas
 
     def agregar_vacuna(self, Vacuna):
-        self.__vacunas.append(Vacuna)
+        self.__listaVacunas.append(Vacuna)
 
     def anular_vacuna(self, indice):
         return
 
     def agregar_consulta(self, Consulta):
-        self.__consultas.append(Consulta)
+        self.__listaConsultas.append(Consulta)
 
     def anular_consulta(self, indice):
         return
@@ -55,14 +60,10 @@ Codigo: {self.__codigo}"""
     def dar_baja(self):
         self.__estado = False
 
-    @property
-    def codigo(self):
-        return self.__codigo
-
     @codigo.setter
     def veterinaria(self, codigo):
         self.__codigo = codigo
 
-    def ishabilitado(self):
-        if self.__estado==True:
+    def habilitado(self):
+        if self.__estado == True:
             return True

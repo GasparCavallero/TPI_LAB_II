@@ -1,13 +1,29 @@
 class Raza:
-    def __init__(self, nombre, tipoAnimal, codigo):
-        self.__nombre = nombre
+    def __init__(self, codigo: int, estado: bool, tipoAnimal: str, nombre: str):
+        self.__codigo = codigo
+        self.__estado = estado
         self.__tipoAnimal = tipoAnimal
-        self.__codigo = int(codigo)
+        self.__nombre = nombre
 
     def __str__(self):
-        return f"""Nombre: {self.__nombre}
-        Codigo: {self.__codigo}
-Tipo animal: {self.__tipoAnimal}"""
+        return f"""Codigo: {self.__codigo}
+Estado: {self.__estado}
+Tipo animal: {self.__tipoAnimal}
+Nombre: {self.__nombre}"""
+
+    def anular(self):
+        self.__estado = False
+
+    def habilitar(self):
+        self.__estado = True
+
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def codigo(self, codigo):
+        self.__codigo = codigo
 
     @property
     def nombre(self):
@@ -24,11 +40,3 @@ Tipo animal: {self.__tipoAnimal}"""
     @tipoAnimal.setter
     def tipoAnimal(self, tipoAnimal):
         self.__tipoAnimal = tipoAnimal
-
-    @property
-    def codigo(self):
-        return self.__codigo
-
-    @codigo.setter
-    def veterinaria(self, codigo):
-        self.__codigo = codigo

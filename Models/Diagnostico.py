@@ -1,15 +1,15 @@
 class Diagnostico:
-    def __init__(self, fecha, descripcion,codigo):
+    def __init__(self, codigo, fecha, descripcion, Tratamiento):
+        self.__codigo = codigo
         self.__fecha = fecha
         self.__descripcion = descripcion
-        self.__tratamiento = ""
-        self.__codigo= int(codigo)
+        self.__tratamiento = Tratamiento
 
     def __str__(self):
-        return f"""Fecha: {self.__fecha}
+        return f"""Codigo: {self.__codigo}
+Fecha: {self.__fecha}
 Descripción: {self.__descripcion}
-Tratamiento: {self.__tratamiento}
-Codigo: {self.__codigo}"""
+Tratamiento: {self.__tratamiento}"""
 
     @property
     def tratamiento(self):

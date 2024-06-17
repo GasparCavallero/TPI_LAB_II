@@ -1,13 +1,13 @@
 class Tratamiento:
-    def __init__(self, fecha, descripcion, codigo):
+    def __init__(self, codigo: int, fecha, descripcion):
+        self.__codigo = codigo
         self.__fecha = fecha
         self.__descripcion = descripcion
-        self.__codigo= int(codigo)
 
     def __str__(self):
-        return f"""Fecha: {self.__fecha}
-Descripción: {self.__descripcion}
-Codigo: {self.__codigo}"""
+        return f"""Codigo: {self.__codigo}
+Fecha: {self.__fecha}
+Descripción: {self.__descripcion}"""
 
     @property
     def fecha(self):

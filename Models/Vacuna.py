@@ -1,13 +1,21 @@
 class Vacuna:
-    def __init__(self, nombre, codigo):
-        self.__estado = True
+    def __init__(self, codigo: int, estado: bool, nombre: str):
+        self.__codigo = codigo
+        self.__estado = estado
         self.__nombre = nombre
-        self.__codigo = int(codigo)
-
+        
     def __str__(self):
-        return f"""Nombre: {self.__nombre}
+        return f"""Codigo: {self.__codigo}
 Estado: {self.__estado}
-Codigo: {self.__codigo}"""
+Nombre: {self.__nombre}"""
+
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def veterinaria(self, codigo):
+        self.__codigo = codigo
 
     @property
     def estado(self):
@@ -39,6 +47,6 @@ Codigo: {self.__codigo}"""
     def veterinaria(self, codigo):
         self.__codigo = codigo
 
-    def ishabilitado(self):
-        if self.__estado==True:
+    def habilitado(self):
+        if self.__estado == True:
             return True
