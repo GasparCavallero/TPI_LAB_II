@@ -17,12 +17,12 @@ Especialidad: {self.__especialidad}
 """
 
     @property
-    def especialidad(self):
-        return self.especialidad
+    def matricula(self):
+        return self.matricula
 
-    @especialidad.setter
-    def especialidad(self, especialidad):
-        self.__especialidad = especialidad
+    @matricula.setter
+    def matricula(self, matricula):
+        self.__matricula = matricula
 
     @property
     def codigo(self):

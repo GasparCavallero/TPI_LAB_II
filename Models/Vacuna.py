@@ -38,3 +38,15 @@ Nombre: {self.__nombre}"""
     
     def dar_alta(self):
         self.__estado = True
+
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def veterinaria(self, codigo):
+        self.__codigo = codigo
+
+    def habilitado(self):
+        if self.__estado == True:
+            return True

@@ -3,6 +3,7 @@ class Persona():
         self.__estado = estado
         self.__nombre = nombre
         self.__apellido = apellido
+        self.__documento=documento
         self.__fechaNac = fechaNac
         self.__correo = correo
 
@@ -10,6 +11,7 @@ class Persona():
         return f"""Estado: {self.__estado}
 Nombre: {self.__nombre}
 Apellido: {self.__apellido}
+Documento: {self.__documento}
 Fecha de nacimiento: {self.__fechaNac}
 Correo: {self.__correo}"""
 
@@ -32,6 +34,14 @@ Correo: {self.__correo}"""
     @apellido.setter
     def apellido(self, apellido):
         self.__apellido = apellido
+
+    @property
+    def documento(self):
+        return self.__documento
+
+    @documento.setter
+    def documento(self, documento):
+        self.__documento= documento
 
     @property
     def fechaNac(self):
@@ -62,3 +72,7 @@ Correo: {self.__correo}"""
 
     def baja(self):
         self.__estado = False 
+
+    def habilitado(self):
+        if self.__estado == True:
+            return True

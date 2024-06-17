@@ -19,7 +19,7 @@ class ControladorRaza:
     def crear_nueva_raza(self, nombre, tipoAnimal):
         objeto = Raza(crearCodigo(self.__listaRazas), True, nombre, tipoAnimal)
         self.__listaRazas.append(objeto)
-
+        
     def modificar_raza(self, codigo):
         for raza in self.__listaRazas:
             if raza.codigo == codigo:

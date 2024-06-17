@@ -72,4 +72,8 @@ Descripción: {self.__descripcion}"""
         self.__estado = True
 
     def dar_baja(self):
-        self.__estado = False    
+        self.__estado = False
+
+    def ishabilitado(self):
+        if self.__estado==True:
+            return True

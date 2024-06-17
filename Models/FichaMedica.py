@@ -60,3 +60,10 @@ Vacunas: {self.__listaVacunas}
     def dar_baja(self):
         self.__estado = False
 
+    @codigo.setter
+    def veterinaria(self, codigo):
+        self.__codigo = codigo
+
+    def habilitado(self):
+        if self.__estado == True:
+            return True
