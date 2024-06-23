@@ -1,5 +1,6 @@
 from Models.Raza import Raza
 from utilidades import *
+from Vistas.VistaRaza import VistaRaza
 
 class ControladorRaza:
     def __init__(self):
@@ -37,3 +38,6 @@ class ControladorRaza:
         for raza in self.__listaRazas:
             if raza.codigo == codigo:
                 return raza
+
+    def menu(self):
+        opcion = VistaRaza.menu()

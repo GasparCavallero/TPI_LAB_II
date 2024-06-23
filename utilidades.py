@@ -1,6 +1,19 @@
+from datetime import *
+
 def crearCodigo(lista): # Busca el último objeto de una lista, accede al atributo código y returnea ese número + 1
     codigo = lista[-1].codigo + 1
     return codigo
+
+def fechaActual():
+    fecha = date.today().strftime("%d/%m/%Y")
+    return fecha
+
+def horaActual():
+    hora = datetime.now().strftime("%H:%M")
+    return hora
+
+def fechayHoraActual():
+    return (f"{fechaActual} {horaActual}")
 
 def buscarObjetoViaCodigo(codigo, lista): # Busca un match del parámetro "codigo" con el atributo codigo de objetos en una lista y returnea el objeto
     for objeto in lista:

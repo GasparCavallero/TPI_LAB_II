@@ -1,9 +1,9 @@
 import tkinter as tk
 from Vistas.VistaGeneral import VistaGeneral
 from .ControladorRaza import ControladorRaza
-from .ControladorVacuna import Controlador_Vacuna
-from .ControladorMascota import Controlador_Mascota
-from .ControladorPropietario import Controlador_Propietario
+from .ControladorVacuna import ControladorVacuna
+from .ControladorMascota import ControladorMascota
+from .ControladorPropietario import ControladorPropietario
 from .ControladorVeterinario import ControladorVeterinario
 from .ControladorFichaMedica import ControladorFichaMedica
 from .ControladorConsulta import ControladorConsulta
@@ -19,11 +19,45 @@ class ControladorGeneral():
         self.ventanaPrincipal.config(background="LightBlue4")
         self.ventanaPrincipal.mainloop()"""
 
-        cp = Controlador_Propietario()
+        self.cp = ControladorPropietario()
         cfm = ControladorFichaMedica()
-        c = Controlador_Mascota(cp, cfm)
-        cv = ControladorVeterinario()
-        [print(c) for c in cv.get_lista_veterinarios()]
-        cv.baja_veterinario()
-        [print(c) for c in cv.get_lista_veterinarios()]
-        
+        self.cv = ControladorVeterinario()
+        self.cr = ControladorRaza()
+        self.cm = ControladorMascota(self.cp, cfm)
+        cvv = ControladorVacuna()
+        ct = ControladorTratamiento()
+        cd = ControladorDiagnostico()
+        [print(c) for c in cd.get_lista_diagnosticos()]
+        cd.crear_nuevo_diagnostico(1, "Sida terminal")
+        [print(c) for c in cd.get_lista_diagnosticos()]
+        cd.eliminar_diagnostico(1)
+        [print(c) for c in cd.get_lista_diagnosticos()]
+
+        """cv.baja_veterinario()
+        [print(c) for c in cv.get_lista_veterinarios()]"""
+        # self.menu()
+
+
+    def menu(self):
+        opcion = VistaGeneral.menu()
+        match opcion:
+            case 1:
+                self.cr.menu()
+            case 2:
+                self.cm.menu()
+            case 3:
+                self.cv.menu()
+            case 4:
+                self.cp.menu()
+            case 5:
+                ...
+            case 6:
+                ...
+            case 7:
+                ...
+            case 8:
+                ...
+            case 0:
+                ...
+            case _:
+                ...

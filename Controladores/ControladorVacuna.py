@@ -1,6 +1,7 @@
 from Models.Vacuna import Vacuna
+from utilidades import *
 
-class Controlador_Vacuna:
+class ControladorVacuna:
     def __init__(self):
         self.__modelo = Vacuna
         self.__listaVacunas = self.cargar_lista_vacunas()
@@ -20,3 +21,22 @@ class Controlador_Vacuna:
         for vacuna in self.__listaVacunas:
             if vacuna.nombre == vacuna:
                 return vacuna
+
+    def crear_nueva_vacuna(self, nombre):
+        vacuna = self.__modelo(crearCodigo(self.__listaVacunas), True, nombre)
+        self.__listaVacunas.append(vacuna)
+
+    def modificar_vacuna(self, codigo: int):
+        for vacuna in self.__listaVacunas:
+            if vacuna.codigo == codigo:
+                vacuna.nombre = input("Nombre vacuna: ") # Reemplazar con vista
+    
+    def alta_vacuna(self, codigo: int):
+        for vacuna in self.__listaVacunas:
+            if vacuna.codigo == codigo:
+                vacuna.dar_alta()
+    
+    def baja_vacuna(self, codigo: int):
+        for vacuna in self.__listaVacunas:
+            if vacuna.codigo == codigo:
+                vacuna.dar_baja()

@@ -3,8 +3,9 @@ from Models.Raza import Raza
 from Models.Propietario import Propietario
 from Models.FichaMedica import FichaMedica
 from utilidades import *
+from Vistas.VistaMascota import VistaMascota
 
-class Controlador_Mascota:
+class ControladorMascota:
     def __init__(self, ControladorPropietario, ControladorFichaMedica):
         self.__ControladorPropietario = ControladorPropietario
         self.__ControladorFichaMedica = ControladorFichaMedica
@@ -69,3 +70,6 @@ class Controlador_Mascota:
     
     def get_lista_mascotas(self):
         return self.__listaMascotas
+    
+    def menu(self):
+        opcion = VistaMascota.menu()

@@ -1,6 +1,7 @@
 class Tratamiento:
-    def __init__(self, codigo: int, fecha, descripcion):
+    def __init__(self, codigo: int, mascota, fecha, descripcion):
         self.__codigo = codigo
+        self.__mascota = mascota
         self.__fecha = fecha
         self.__descripcion = descripcion
 
@@ -24,6 +25,14 @@ Descripción: {self.__descripcion}"""
     @descripcion.setter
     def descripcion(self, descripcion):
         self.__descripcion = descripcion
+
+    @property
+    def mascota(self):
+        return self.__mascota
+    
+    @mascota.setter
+    def mascota(self, mascota):
+        self.__mascota = mascota
 
     @property
     def codigo(self):

@@ -1,7 +1,8 @@
 from Models.Propietario import Propietario
 from utilidades import *
+from Vistas.VistaPropietario import VistaPropietario
 
-class Controlador_Propietario:
+class ControladorPropietario:
     def __init__(self):
         self.__modelo = Propietario
         self.__listaPropietarios = []
@@ -52,3 +53,6 @@ class Controlador_Propietario:
 
     def get_lista_propietarios(self):
         return self.__listaPropietarios
+
+    def menu(self):
+        opcion = VistaPropietario().menu()

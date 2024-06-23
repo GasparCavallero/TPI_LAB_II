@@ -13,5 +13,8 @@ class ControladorConsulta:
                 lista.append(self.__modelo(int(codigo), bool(estado), Veterinario, Diagnostico, descripcion, fecha))
         return lista
 
+    def crear_nueva_consulta(self):
+        ...
+
     def get_lista_consultas(self):
         return self.__listaConsultas

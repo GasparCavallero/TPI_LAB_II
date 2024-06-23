@@ -3,7 +3,6 @@ class Persona():
         self.__estado = estado
         self.__nombre = nombre
         self.__apellido = apellido
-        self.__documento=documento
         self.__fechaNac = fechaNac
         self.__correo = correo
 

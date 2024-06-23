@@ -1,9 +1,8 @@
 class FichaMedica:
-    def __init__(self, codigo: int, estado: bool, Mascota, listaConsultas, listaVacunas):
+    def __init__(self, codigo: int, estado: bool, Mascota, listaVacunas):
         self.__codigo = codigo
         self.__estado = estado
         self.__mascota = Mascota
-        self.__listaConsultas = listaConsultas
         self.__listaVacunas = listaVacunas
 
     def __str__(self):

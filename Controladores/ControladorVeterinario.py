@@ -1,5 +1,6 @@
 from Models.Veterinario import Veterinario
 from utilidades import *
+from Vistas.VistaVeterinario import VistaVeterinario
 
 class ControladorVeterinario:
     def __init__(self):
@@ -49,3 +50,6 @@ class ControladorVeterinario:
                 veterinario.baja()
             else:
                 return # Vista error
+            
+    def menu(self):
+        opcion = VistaVeterinario.menu()
