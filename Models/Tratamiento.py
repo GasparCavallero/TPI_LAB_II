@@ -7,6 +7,7 @@ class Tratamiento:
 
     def __str__(self):
         return f"""Codigo: {self.__codigo}
+Mascota: {self.__mascota}
 Fecha: {self.__fecha}
 Descripción: {self.__descripcion}"""
 

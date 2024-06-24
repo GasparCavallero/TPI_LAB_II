@@ -33,7 +33,7 @@ Nombre: {self.__nombre}"""
     def nombre(self, nombre):
         self.__nombre = nombre
 
-    def dar_baja(self):
+    def anular(self):
         self.__estado = False
     
     def dar_alta(self):

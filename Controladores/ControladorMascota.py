@@ -21,6 +21,9 @@ class ControladorMascota:
                 lista.append(self.__modelo(int(codigo), bool(estado), Propietario, Raza, FichaMedica, nombre, fechaNac))
         return lista
     
+    def buscar_mascota(self):
+        ...
+
     def crear_nueva_mascota(self):
         # Pedir propietario y si propietario no existe crear uno
         codigo_propietario = self.__vista.pedirCodigo("Ingrese el código del propietario de la mascota: ")

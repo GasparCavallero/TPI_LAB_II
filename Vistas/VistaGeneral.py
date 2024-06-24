@@ -1,9 +1,9 @@
-import tkinter as tk
+import os
 
-class VistaGeneral(): #tk.Frame    
+class VistaGeneral():
     def menu(self):
         opcion: int = 0
-        while opcion not in range(1, 10):
+        while opcion not in range(1, 11):
             try:
                 opcion = int(input("""💊 ¡Bienvenido al sistema de administración de veterinarias de Impulsive! 💊
 [1] Gestión de razas 🦍
@@ -14,11 +14,29 @@ class VistaGeneral(): #tk.Frame
 [6] Gestión de vacunas 💉
 [7] Gestión de diagnósticos 📝
 [8] Gestión de tratamientos 🗂️
-[9] Salir del sistema 👋
+[9] Gestión de consultas 🖋️
+[10] Salir del programa👋
 > """))
             except ValueError:
                 self.mostrarErrorStrEnInt()
         return opcion
+    
+    def limpiarPantalla(self):
+        if os.name in ('nt','dos'):
+            os.system("cls")
+        elif os.name in ('linux','osx','posix'):
+            os.system("clear")
+
+    def mostrarAdios(self):
+        print("Guardando datos...")
+        print("¡Gracias por utilizar el sistema!")
+
+    def mostrarObjeto(self, objeto, mensaje=None):
+        if mensaje == None:
+            pass
+        else:
+            print(mensaje)
+        print(objeto)
     
     def pedirCodigo(self, mensaje):
         codigo = self.inputIntNoVacioNoNegativo(mensaje)
@@ -61,3 +79,9 @@ class VistaGeneral(): #tk.Frame
 
     def mostrarCambioExitoso(self):
         print("Cambio efectuado exitosamente.")
+
+    def mostrarEnterParaVolver(self):
+        input("Presione [ENTER] para volver ")
+
+    def mostrarEliminadoExitosamente(self, objeto):
+        print(f"{objeto} eliminado/a exitosamente.")

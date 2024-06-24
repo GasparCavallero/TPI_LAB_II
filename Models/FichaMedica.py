@@ -45,7 +45,8 @@ Vacunas: {self.__listaVacunas}
         self.__listaVacunas = vacunas
 
     def agregar_vacuna(self, Vacuna):
-        self.__listaVacunas.append(Vacuna)
+        lista = self.__listaVacunas + f",{Vacuna}"
+        self.__listaVacunas = lista
 
     def anular_vacuna(self, indice):
         return
@@ -59,7 +60,7 @@ Vacunas: {self.__listaVacunas}
     def dar_alta(self):
         self.__estado = True
 
-    def dar_baja(self):
+    def anular(self):
         self.__estado = False
 
     @property

@@ -6,6 +6,7 @@ from utilidades import *
 class ControladorTratamiento:
     def __init__(self):
         self.__modelo = Tratamiento
+        self.__vista = VistaTratamiento()
         self.__listaTratamientos = self.cargar_lista_tratamientos()
 
     def cargar_lista_tratamientos(self):
@@ -16,40 +17,69 @@ class ControladorTratamiento:
                 lista.append(self.__modelo(int(codigo), mascota, fecha, descripcion))
         return lista
     
-    def crear_nuevo_tratamiento(self, descripcion, mascota):
-        tratamiento = self.__modelo(crearCodigo(self.__listaTratamientos), mascota, fechaActual(), descripcion)
-        self.__listaTratamientos.append(tratamiento)
+    def crear_nuevo_tratamiento(self):
+        # if controlador.mascota.buscar_mascota: pedir descripcion, crear tratamiento y appendear, else mostrar error
+        mascota = self.__vista.pedirCodigo("Ingrese el código de la mascota a la que se le asignará el tratamiento: ")
+        if self.controlador_mascota.buscar_mascota(mascota) == True:
+            descripcion = self.__vista.inputIntNoVacioNoNegativo("Ingrese la descripción del tratamiento: ")
+            tratamiento = self.__modelo(crearCodigo(self.__listaTratamientos), mascota, fechaActual(), descripcion)
+            self.__listaTratamientos.append(tratamiento)
+        else:
+            self.__vista.codigoInvalido()
         # quizá haya que appendear a la lista de ficha medica, o quiza directamente quitar la lista de ficha medica y usar este controlador
 
     def get_tratamientos_via_codigo(self, codigo):
         # get todos los tratamientos que matcheen el código, para construir ficha médica
         ...
 
-    def eliminar_tratamiento(self, codigo: int):
+    def eliminar_tratamiento(self):
+        match = False
+        codigo = self.__vista.pedirCodigo("Ingrese el código del tratamiento a eliminar: ")
         for tratamiento in self.__listaTratamientos:
             if tratamiento.codigo == codigo:
+                match = True
                 self.__listaTratamientos.remove(tratamiento)
+                self.__vista.mostrarEliminadoExitosamente("Tratamiento")
+        if match == False:
+            self.__vista.codigoInvalido()
 
     def guardar_tratamientos(self):
         with open("Archivos/tratamiento.txt", "w") as txt:
             for linea in self.__listaTratamientos:
                 txt.write(f"{linea.codigo};{linea.mascota};{linea.fecha};{linea.descripcion}\n")
 
-    def modificar_tratamiento(self, codigo: int, descripcion, mascota):
+    def modificar_tratamiento(self):
+        match = False
+        codigo = self.__vista.pedirCodigo("Ingrese el código del tratamiento a modificar: ")
         for tratamiento in self.__listaTratamientos:
             if tratamiento.codigo == codigo:
+                match = True
+                mascota, descripcion = self.__vista.modificar_tratamiento(tratamiento)
                 tratamiento.descripcion = descripcion
                 tratamiento.mascota = mascota
+                self.__vista.mostrarCambioExitoso()
+        if match == False:
+            self.__vista.codigoInvalido()
 
     def menu(self):
-        opcion = VistaTratamiento().menu()
-        match opcion:
-            case 1:
-                ...
-            case 2:
-                ...
-            case _:
-                ...
+        opcion = self.__vista.menu()
+        while opcion != 5:
+            match opcion:
+                case 1:
+                    self.__vista.mostrarLista(self.get_lista_tratamientos())
+                    self.__vista.mostrarEnterParaVolver()
+                case 2:
+                    self.modificar_tratamiento()
+                    self.__vista.mostrarEnterParaVolver()
+                case 3:
+                    self.crear_nuevo_tratamiento()
+                    self.__vista.mostrarEnterParaVolver()
+                case 4:
+                    self.eliminar_tratamiento()
+                    self.__vista.mostrarEnterParaVolver()
+                case 5:
+                    break
+            break
 
     def get_lista_tratamientos(self):
         return self.__listaTratamientos
