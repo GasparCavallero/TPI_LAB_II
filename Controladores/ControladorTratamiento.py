@@ -1,4 +1,5 @@
 from Models.Tratamiento import Tratamiento
+from Vistas.VistaTratamiento import VistaTratamiento
 from utilidades import *
 
 
@@ -39,6 +40,16 @@ class ControladorTratamiento:
             if tratamiento.codigo == codigo:
                 tratamiento.descripcion = descripcion
                 tratamiento.mascota = mascota
+
+    def menu(self):
+        opcion = VistaTratamiento().menu()
+        match opcion:
+            case 1:
+                ...
+            case 2:
+                ...
+            case _:
+                ...
 
     def get_lista_tratamientos(self):
         return self.__listaTratamientos

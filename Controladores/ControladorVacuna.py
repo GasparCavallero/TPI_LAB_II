@@ -1,4 +1,5 @@
 from Models.Vacuna import Vacuna
+from Vistas.VistaVacuna import VistaVacuna
 from utilidades import *
 
 class ControladorVacuna:
@@ -21,6 +22,16 @@ class ControladorVacuna:
         for vacuna in self.__listaVacunas:
             if vacuna.nombre == vacuna:
                 return vacuna
+
+    def menu(self):
+        opcion = VistaVacuna().menu()
+        match opcion:
+            case 1:
+                ...
+            case 2:
+                ...
+            case _:
+                ...
 
     def guardar_vacunas(self):
         with open("Archivos/vacuna.txt", "w") as txt:

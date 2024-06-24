@@ -1,6 +1,10 @@
 class VistaVeterinario:
     def menu():
-        opcion = int(input("""[1] para dar de alta un nuevo veterinario
-[2] para modificar un veterinario ya registrado
-[3] para eliminar un veterinario del sistema
-> """))
+        opcion = "0"
+        while opcion != "9":
+            opcion = input("""⛑️  Menú de personal veterinario ⛑️
+[1] Dar de alta un nuevo veterinario
+[2] Modificar un veterinario ya registrado
+[3] Eliminar un veterinario del sistema
+[9] Volver
+> """)

@@ -1,4 +1,5 @@
 from Models.FichaMedica import FichaMedica
+from Vistas.VistaFichaMedica import VistaFichaMedica
 from utilidades import *
 import os
 
@@ -28,7 +29,17 @@ class ControladorFichaMedica:
         for fm in self.__listaFichasMedicas:
             if fm.codigo == codigo:
                 return fm
-            
+    
+    def menu(self):
+        opcion = VistaFichaMedica().menu()
+        match opcion:
+            case 1:
+                ...
+            case 2:
+                ...
+            case _:
+                ...
+
     def guardar_fichasmedicas(self):
         for linea in self.__listaFichasMedicas:
             with open(f"Archivos/fichasmedicas/{str(linea.codigo)}.txt", "w") as txt:

@@ -1,4 +1,5 @@
 from Models.Diagnostico import Diagnostico
+from Vistas.VistaDiagnostico import VistaDiagnostico
 from utilidades import *
 
 class ControladorDiagnostico:
@@ -34,6 +35,14 @@ class ControladorDiagnostico:
         for diagnostico in self.__listaDiagnosticos:
             if diagnostico.codigo == codigo:
                 self.__listaDiagnosticos.remove(diagnostico)
+
+    def menu(self):
+        opcion = VistaDiagnostico().menu()
+        match opcion:
+            case 1:
+                ...
+            case 2:
+                ...
 
     def modificar_diagnostico(self, codigo: int, mascota, descripcion):
         for diagnostico in self.__listaDiagnosticos:

@@ -46,3 +46,11 @@ class ControladorRaza:
 
     def menu(self):
         opcion = VistaRaza.menu()
+        while opcion != 9:
+            match opcion:
+                case 1:
+                    print("...")
+                    opcion = VistaRaza.menu()
+                case 9:
+                    print("0")
+            break
