@@ -6,10 +6,7 @@ class Raza:
         self.__nombre = nombre
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {self.__estado}
-Tipo animal: {self.__tipoAnimal}
-Nombre: {self.__nombre}"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Nombre: {self.__nombre} | Tipo animal: {self.__tipoAnimal}"""
 
     def anular(self):
         self.__estado = False
@@ -26,6 +23,10 @@ Nombre: {self.__nombre}"""
         self.__codigo = codigo
 
     @property
+    def estado(self):
+        return self.__estado
+
+    @property
     def nombre(self):
         return self.__nombre
     
@@ -40,3 +41,9 @@ Nombre: {self.__nombre}"""
     @tipoAnimal.setter
     def tipoAnimal(self, tipoAnimal):
         self.__tipoAnimal = tipoAnimal
+
+    def ishabilitado(self):
+        if self.__estado == True:
+            return "Activa"
+        else:
+            return "Anulada"

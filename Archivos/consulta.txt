@@ -1,1 +1,4 @@
-1;True;1;1;Respiracion agitada;16/06/2024
+1;True;1;Respiracion agitada continua;12/12/2005
+2;True;1;Catarro;23/06/2024
+3;True;1;Congestion;23/06/2024
+4;True;1;Vomito repetitivo;24/06/2024

@@ -1,21 +1,14 @@
 class Consulta:
-    def __init__(self, codigo: int, estado: bool, Veterinario, Diagnostico, descripcion, fecha):
+    def __init__(self, codigo: int, estado: bool, Veterinario: int, descripcion, fecha):
         self.__codigo = codigo
         self.__estado = estado
         self.__veterinario = Veterinario
-        self.__diagnostico = Diagnostico
         self.__veterinaria = "Veterinaria San Pedrito"
         self.__descripcion = descripcion
         self.__fecha = fecha
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {self.__estado}
-Fecha de la consulta: {self.__fecha}
-Veterinario: {self.__veterinario}
-Veterinaria: {self.__veterinaria}
-Diagnostico: {self.__diagnostico}
-Descripción: {self.__descripcion}"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Fecha de la consulta: {self.__fecha} | Veterinario: {self.__veterinario} | Veterinaria: {self.__veterinaria} | Descripción: {self.__descripcion}"""
 
     ### Get/Set
 
@@ -65,9 +58,17 @@ Descripción: {self.__descripcion}"""
         return self.__codigo
 
     @codigo.setter
-    def veterinaria(self, codigo):
+    def codigo(self, codigo):
         self.__codigo = codigo
     
+    @property
+    def estado(self):
+        return self.__estado
+    
+    @estado.setter
+    def estado(self, estado):
+        self.__estado = estado
+
     def dar_alta(self):
         self.__estado = True
 
@@ -75,5 +76,7 @@ Descripción: {self.__descripcion}"""
         self.__estado = False
 
     def ishabilitado(self):
-        if self.__estado==True:
-            return True
+        if self.__estado == True:
+            return "Vigente"
+        else:
+            return "Anulada"

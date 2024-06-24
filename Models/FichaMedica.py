@@ -1,18 +1,16 @@
 class FichaMedica:
-    def __init__(self, codigo: int, estado: bool, Mascota, listaConsultas, listaVacunas):
+    def __init__(self, codigo: int, estado: bool, Mascota, listaVacunas):
         self.__codigo = codigo
         self.__estado = estado
         self.__mascota = Mascota
-        self.__listaConsultas = listaConsultas
         self.__listaVacunas = listaVacunas
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {self.__estado}
-Mascota: {self.__mascota}
-Consulta: {self.__listaConsultas}
-Vacunas: {self.__listaVacunas}
-"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Mascota: {self.__mascota} | Vacunas: {self.__listaVacunas}"""
+
+    @property
+    def listaVacunas(self):
+        return self.__listaVacunas
 
     @property
     def codigo(self):
@@ -43,7 +41,8 @@ Vacunas: {self.__listaVacunas}
         self.__listaVacunas = vacunas
 
     def agregar_vacuna(self, Vacuna):
-        self.__listaVacunas.append(Vacuna)
+        lista = self.__listaVacunas + f",{Vacuna}"
+        self.__listaVacunas = lista
 
     def anular_vacuna(self, indice):
         return
@@ -57,13 +56,19 @@ Vacunas: {self.__listaVacunas}
     def dar_alta(self):
         self.__estado = True
 
-    def dar_baja(self):
+    def anular(self):
         self.__estado = False
+
+    @property
+    def estado(self):
+        return self.__estado
 
     @codigo.setter
     def veterinaria(self, codigo):
         self.__codigo = codigo
 
-    def habilitado(self):
+    def ishabilitado(self):
         if self.__estado == True:
-            return True
+            return "Habilitada"
+        else:
+            return "Deshabilitada"
