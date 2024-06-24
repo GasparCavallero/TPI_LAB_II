@@ -78,12 +78,16 @@ class ControladorMascota:
             match opcion:
                 case 1:
                     self.__vista.mostrarLista(self.get_lista_mascotas())
+                    self.__vista.mostrarEnterParaVolver()
                 case 2:
                     self.crear_nueva_mascota()
+                    self.__vista.mostrarEnterParaVolver()
                 case 3:
                     self.modificar_mascota()
+                    self.__vista.mostrarEnterParaVolver()
                 case 4:
                     self.anular_mascota()
+                    self.__vista.mostrarEnterParaVolver()
                 case 5:
                     break
             break

@@ -46,6 +46,7 @@ class VistaGeneral():
         [print(c) for c in lista]
 
     def mostrarErrorStrEnInt(self):
+        self.limpiarPantalla()
         print("Solo permitidos valores numéricos. Intente nuevamente.")
 
     def inputStringNoVacia(self, mensaje):
@@ -53,6 +54,7 @@ class VistaGeneral():
         while valor == "":
             valor = input(mensaje)
             if valor == "":
+                self.limpiarPantalla()
                 print("El campo no puede estar vacío.")
         return valor
 
@@ -63,6 +65,7 @@ class VistaGeneral():
         print(f"{objeto} anulada/o exitosamente.")
 
     def codigoInvalido(self):
+        self.limpiarPantalla()
         print("Código inválido. Vuelva a intentar.")
 
     def inputIntNoVacioNoNegativo(self, mensaje):
@@ -71,8 +74,10 @@ class VistaGeneral():
             try:
                 valor = int(input(mensaje))
             except ValueError:
+                self.limpiarPantalla()
                 self.mostrarErrorStrEnInt()
         return valor
+        
     
     def mostrarCreacionExitosa(self):
         print("Creación exitosa.")

@@ -70,12 +70,16 @@ class ControladorRaza:
             match opcion:
                 case 1:
                     self.__vista.mostrarLista(self.get_lista_razas()) # Mostrar todas las razas
+                    self.__vista.mostrarEnterParaVolver()
                 case 2:
                     self.modificar_raza()
+                    self.__vista.mostrarEnterParaVolver()
                 case 3:
                     self.crear_nueva_raza()
+                    self.__vista.mostrarEnterParaVolver()
                 case 4:
                     self.eliminar_raza()
+                    self.__vista.mostrarEnterParaVolver()
                 case 5:
                     break
             break

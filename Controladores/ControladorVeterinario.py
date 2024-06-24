@@ -67,12 +67,16 @@ class ControladorVeterinario:
             match opcion:
                 case 1:
                     self.__vista.mostrarLista(self.get_lista_veterinarios())
+                    self.__vista.mostrarEnterParaVolver()
                 case 2:
                     self.crear_nuevo_veterinario()
+                    self.__vista.mostrarEnterParaVolver()
                 case 3:
                     self.modificar_veterinario()
+                    self.__vista.mostrarEnterParaVolver()
                 case 4:
                     self.anular_veterinario()
+                    self.__vista.mostrarEnterParaVolver()
                 case 5:
                     break
             break
