@@ -25,11 +25,12 @@ class ControladorMascota:
             propietario = propietario
         else:
             propietario = self.__ControladorPropietario.crear_nuevo_propietario() # Falta crear
-        raza = input("Código de raza: ")
-        nombre = input("Nombre: ")
-        fechaNac = input("Fecha de nacimiento formato DD/MM/AAAA: ")
+        raza = input("Código de raza: ") # Reemplazar por vistas
+        nombre = input("Nombre: ") # Reemplazar por vistas
+        fechaNac = input("Fecha de nacimiento formato DD/MM/AAAA: ") # Reemplazar por vistas con validación
         codigo = crearCodigo(self.__listaMascotas)
         mascota = Mascota(codigo, True, propietario, raza, codigo, nombre, fechaNac)
+        self.__listaMascotas.append(self.__modelo(int(codigo), True, propietario, raza, int(codigo), nombre, fechaNac))
         self.__ControladorFichaMedica.crear_nueva_fichaMedica(mascota.codigo)
         self.__ControladorPropietario.agregar_mascota(mascota.propietario, str(mascota.codigo))
 
@@ -40,6 +41,12 @@ class ControladorMascota:
                 mascota.fechaNac = input(f"Nueva fecha de nacimiento: ") # Modificar por vista
             else:
                 return # Crear excepción/mensaje de error/no encontrado en sección vista
+
+    def guardar_mascotas(self):
+        with open("Archivos/mascota.txt", "w") as txt:
+            for linea in self.__listaMascotas:
+                txt.write(f"{linea.codigo};{linea.estado};{linea.propietario};{linea.raza};{linea.codigo};{linea.nombre};{linea.fechaNac}\n")
+
 
     def anular_mascota(self, codigo: int):
         for mascota in self.__listaMascotas:

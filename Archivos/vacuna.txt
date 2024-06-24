@@ -1,1 +1,2 @@
 1;True;Vacuna Antigripal
+2;True;Hepatitis B

@@ -17,11 +17,16 @@ Mascotas: {self.__listaMascotas}
 """
 
     def agregar_mascota(self, Mascota):
-        self.__listaMascotas.append(Mascota)
+        lista = self.__listaMascotas + f",{Mascota}"
+        self.__listaMascotas = lista
 
     @property
     def codigo(self):
         return self.__codigo
+
+    @property
+    def listaMascotas(self):
+        return self.__listaMascotas
 
     @codigo.setter
     def veterinaria(self, codigo):

@@ -19,6 +19,10 @@ Especialidad: {self.__especialidad}
     @property
     def matricula(self):
         return self.matricula
+    
+    @property
+    def especialidad(self):
+        return self.__especialidad
 
     @matricula.setter
     def matricula(self, matricula):

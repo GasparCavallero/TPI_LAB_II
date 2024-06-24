@@ -8,8 +8,8 @@ class Raza:
     def __str__(self):
         return f"""Codigo: {self.__codigo}
 Estado: {self.__estado}
-Tipo animal: {self.__tipoAnimal}
-Nombre: {self.__nombre}"""
+Nombre: {self.__nombre}
+Tipo animal: {self.__tipoAnimal}"""
 
     def anular(self):
         self.__estado = False
@@ -24,6 +24,10 @@ Nombre: {self.__nombre}"""
     @codigo.setter
     def codigo(self, codigo):
         self.__codigo = codigo
+
+    @property
+    def estado(self):
+        return self.__estado
 
     @property
     def nombre(self):

@@ -1,1 +1,2 @@
 1;1;10/11/2023;Se receta paracetamol
+2;1;23/06/2024;7 dias de ibuprofeno

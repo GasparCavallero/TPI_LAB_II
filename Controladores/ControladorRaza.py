@@ -18,7 +18,7 @@ class ControladorRaza:
         return self.__listaRazas
 
     def crear_nueva_raza(self, nombre, tipoAnimal):
-        objeto = Raza(crearCodigo(self.__listaRazas), True, nombre, tipoAnimal)
+        objeto = Raza(crearCodigo(self.__listaRazas), True, tipoAnimal, nombre)
         self.__listaRazas.append(objeto)
         
     def modificar_raza(self, codigo):
@@ -33,6 +33,11 @@ class ControladorRaza:
         for raza in self.__listaRazas:
             if raza.codigo == codigo:
                 raza.anular()
+
+    def guardar_razas(self):
+        with open("Archivos/raza.txt", "w") as txt:
+            for linea in self.__listaRazas:
+                txt.write(f"{linea.codigo};{linea.estado};{linea.nombre};{linea.tipoAnimal}\n")
 
     def buscar_raza(self, codigo): # Busca raza vía código en lista de razas
         for raza in self.__listaRazas:

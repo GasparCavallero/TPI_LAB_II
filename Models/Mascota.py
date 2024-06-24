@@ -26,6 +26,12 @@ Fecha de nacimiento: {self.__fechaNac}"""
         self.__propietario = Propietario
 
     @property
+    def estado(self):
+        return self.__estado
+
+
+
+    @property
     def raza(self):
         return self.__raza
 

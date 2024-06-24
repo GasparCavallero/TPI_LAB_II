@@ -25,18 +25,20 @@ class ControladorGeneral():
         self.cr = ControladorRaza()
         self.cm = ControladorMascota(self.cp, cfm)
         cvv = ControladorVacuna()
+        cr = ControladorRaza()
         ct = ControladorTratamiento()
         cd = ControladorDiagnostico()
-        [print(c) for c in cd.get_lista_diagnosticos()]
-        cd.crear_nuevo_diagnostico(1, "Sida terminal")
-        [print(c) for c in cd.get_lista_diagnosticos()]
-        cd.eliminar_diagnostico(1)
-        [print(c) for c in cd.get_lista_diagnosticos()]
+        cc = ControladorConsulta()
+        
+        self.cv.crear_nuevo_veterinario()
+        self.cv.guardar_veterinarios()
 
         """cv.baja_veterinario()
         [print(c) for c in cv.get_lista_veterinarios()]"""
         # self.menu()
 
+    def guardar(self):
+        ...
 
     def menu(self):
         opcion = VistaGeneral.menu()

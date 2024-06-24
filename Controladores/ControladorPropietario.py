@@ -12,9 +12,9 @@ class ControladorPropietario:
         with open("Archivos/propietario.txt", "r") as txt:
             for linea in txt:
                 codigo, estado, nombre, apellido, fechaNac, correo, listaMascotas = linea.strip().split(";")
-                self.__listaPropietarios.append(self.__modelo(int(codigo), bool(estado), nombre, apellido, fechaNac, correo, list(listaMascotas)))
+                self.__listaPropietarios.append(self.__modelo(int(codigo), bool(estado), nombre, apellido, fechaNac, correo, listaMascotas))
 
-    def agregar_mascota(self, codigo, mascota):
+    def agregar_mascota(self, codigo: int, mascota: str):
         for propietario in self.__listaPropietarios:
             if propietario.codigo == codigo:
                 propietario.agregar_mascota(mascota)
@@ -29,7 +29,7 @@ class ControladorPropietario:
         apellido = input("Apellido: ") # Reemplazar por vistas
         fechaNac = input("Fecha de nacimiento (formato DD/MM/AAAA): ") # Reemplazar por vistas
         correo = input("Ingrese su correo: ") # Reemplazar por vistas
-        propietario = self.__modelo(crearCodigo(self.__listaPropietarios), True, nombre, apellido, fechaNac, correo, []) # Creación de nuevo propetario, usar crearCodigo, estado = True, pasarle la lista de Mascotas vacía y luego appendearla cuando se haya creado mascota
+        propietario = self.__modelo(crearCodigo(self.__listaPropietarios), True, nombre, apellido, fechaNac, correo, "0") # Creación de nuevo propetario, usar crearCodigo, estado = True, pasarle la lista de Mascotas vacía y luego appendearla cuando se haya creado mascota
         self.__listaPropietarios.append(propietario)
 
     def modificar_propietario(self):
@@ -42,6 +42,11 @@ class ControladorPropietario:
                 propietario.correo = input("Nuevo correo: ")
             else:
                 return # Vista de error
+
+    def guardar_propietarios(self):
+        with open("Archivos/propietario.txt", "w") as txt:
+            for linea in self.__listaPropietarios:
+                txt.write(f"{linea.codigo};{linea.estado};{linea.nombre};{linea.apellido};{linea.fechaNac};{linea.correo};{linea.listaMascotas}\n")
 
     def baja_propietario(self):
         codigo:int = int(input("Codigo del propietario a anular: ")) # Reempalzar por vista

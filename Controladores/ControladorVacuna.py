@@ -22,6 +22,11 @@ class ControladorVacuna:
             if vacuna.nombre == vacuna:
                 return vacuna
 
+    def guardar_vacunas(self):
+        with open("Archivos/vacuna.txt", "w") as txt:
+            for linea in self.__listaVacunas:
+                txt.write(f"{linea.codigo};{linea.estado};{linea.nombre}\n")
+
     def crear_nueva_vacuna(self, nombre):
         vacuna = self.__modelo(crearCodigo(self.__listaVacunas), True, nombre)
         self.__listaVacunas.append(vacuna)

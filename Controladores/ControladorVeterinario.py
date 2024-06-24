@@ -28,6 +28,11 @@ class ControladorVeterinario:
         propietario = self.__modelo(crearCodigo(self.__listaVeterinarios), True, nombre, apellido, fechaNac, correo, especialidad) # Creación de nuevo propetario, usar crearCodigo, estado = True, pasarle la lista de Mascotas vacía y luego appendearla cuando se haya creado mascota
         self.__listaVeterinarios.append(propietario)
 
+    def guardar_veterinarios(self):
+        with open("Archivos/veterinario.txt", "w") as txt:
+            for linea in self.__listaVeterinarios:
+                txt.write(f"{linea.codigo};{linea.estado};{linea.nombre};{linea.apellido};{linea.fechaNac};{linea.correo};{linea.especialidad}\n")
+
     def modificar_veterinario(self):
         codigo:int = int(input("Ingrese el código del veterinario a modificar: "))
         for veterinario in self.__listaVeterinarios:

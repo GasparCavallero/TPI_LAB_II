@@ -25,6 +25,11 @@ class ControladorDiagnostico:
         # get todos los tratamientos que matcheen el código, para construir ficha médica
         ...
 
+    def guardar_diagnosticos(self):
+        with open("Archivos/diagnostico.txt", "w") as txt:
+            for linea in self.__listaDiagnosticos:
+                txt.write(f"{linea.codigo};{linea.mascota};{linea.fecha};{linea.descripcion}\n")
+
     def eliminar_diagnostico(self, codigo: int):
         for diagnostico in self.__listaDiagnosticos:
             if diagnostico.codigo == codigo:

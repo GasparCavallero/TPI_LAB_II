@@ -29,4 +29,9 @@ class ControladorFichaMedica:
             if fm.codigo == codigo:
                 return fm
             
+    def guardar_fichasmedicas(self):
+        for linea in self.__listaFichasMedicas:
+            with open(f"Archivos/fichasmedicas/{str(linea.codigo)}.txt", "w") as txt:
+                txt.write(f"{linea.codigo};{linea.estado};{linea.mascota};{linea.listaVacunas}")
+
     # RESOLVER ESCRITURA DE ARCHIVOS

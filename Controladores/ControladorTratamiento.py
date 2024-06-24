@@ -29,6 +29,11 @@ class ControladorTratamiento:
             if tratamiento.codigo == codigo:
                 self.__listaTratamientos.remove(tratamiento)
 
+    def guardar_tratamientos(self):
+        with open("Archivos/tratamiento.txt", "w") as txt:
+            for linea in self.__listaTratamientos:
+                txt.write(f"{linea.codigo};{linea.mascota};{linea.fecha};{linea.descripcion}\n")
+
     def modificar_tratamiento(self, codigo: int, descripcion, mascota):
         for tratamiento in self.__listaTratamientos:
             if tratamiento.codigo == codigo:

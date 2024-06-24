@@ -9,9 +9,12 @@ class FichaMedica:
         return f"""Codigo: {self.__codigo}
 Estado: {self.__estado}
 Mascota: {self.__mascota}
-Consulta: {self.__listaConsultas}
 Vacunas: {self.__listaVacunas}
 """
+
+    @property
+    def listaVacunas(self):
+        return self.__listaVacunas
 
     @property
     def codigo(self):
@@ -58,6 +61,10 @@ Vacunas: {self.__listaVacunas}
 
     def dar_baja(self):
         self.__estado = False
+
+    @property
+    def estado(self):
+        return self.__estado
 
     @codigo.setter
     def veterinaria(self, codigo):
