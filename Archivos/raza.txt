@@ -1,2 +1,2 @@
-1;True;Labrador;Perro
-2;True;Ovejero Aleman;Perro
+1;True;Perro;Labrador
+2;True;Perro;Ovejero Aleman
