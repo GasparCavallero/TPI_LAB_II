@@ -5,6 +5,7 @@ from Vistas.VistaRaza import VistaRaza
 class ControladorRaza:
     def __init__(self):
         self.__modelo = Raza
+        self.__vista = VistaRaza()
         self.__listaRazas = []
         self.cargar_lista_razas()
 
@@ -17,17 +18,24 @@ class ControladorRaza:
     def get_lista_razas(self): # Returnea lista de razas 
         return self.__listaRazas
 
-    def crear_nueva_raza(self, nombre, tipoAnimal):
+    def crear_nueva_raza(self):
+        tipoAnimal, nombre = self.__vista.crearNuevaRaza()
         objeto = Raza(crearCodigo(self.__listaRazas), True, tipoAnimal, nombre)
         self.__listaRazas.append(objeto)
+        self.__vista.mostrarCreacionExitosa()
         
-    def modificar_raza(self, codigo):
+    def modificar_raza(self):
+        match = False
+        codigo = self.__vista.pedirCodigo("Ingrese el código de raza a modificar: ")
         for raza in self.__listaRazas:
             if raza.codigo == codigo:
-                tipoAnimal = input("Tipo de animal: ") # Reemplazar por llamada a vista
-                nombre = input("Nombre: ") # Reemplazar por llamada a vista
+                match = True
+                tipoAnimal, nombre = self.__vista.modificarRaza(raza)
                 raza.nombre = nombre
                 raza.tipoAnimal = tipoAnimal
+                self.__vista.mostrarCambioExitoso()
+        if match == False:
+            self.__vista.codigoInvalido()
 
     def anular_raza(self, codigo):
         for raza in self.__listaRazas:
@@ -44,13 +52,30 @@ class ControladorRaza:
             if raza.codigo == codigo:
                 return raza
 
+    def eliminar_raza(self):
+        codigo = self.__vista.pedirCodigo("Ingrese el código de raza a eliminar: ")
+        match = False
+        for raza in self.__listaRazas:
+            if raza.codigo == codigo:
+                match = True
+                self.__listaRazas.remove(raza)
+                self.__vista.mostrarObjetoEliminadoExitosamente("Raza")
+        if match == False:
+            self.__vista.codigoInvalido()
+
+
     def menu(self):
-        opcion = VistaRaza.menu()
-        while opcion != 9:
+        opcion = self.__vista.menu()
+        while opcion != 5:
             match opcion:
                 case 1:
-                    print("...")
-                    opcion = VistaRaza.menu()
-                case 9:
-                    print("0")
+                    self.__vista.mostrarLista(self.get_lista_razas()) # Mostrar todas las razas
+                case 2:
+                    self.modificar_raza()
+                case 3:
+                    self.crear_nueva_raza()
+                case 4:
+                    self.eliminar_raza()
+                case 5:
+                    break
             break

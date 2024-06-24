@@ -66,10 +66,10 @@ Correo: {self.__correo}"""
     def estado(self, correo):
         self.__estado = correo
 
-    def alta(self):
+    def habilitar(self):
         self.__estado = True
 
-    def baja(self):
+    def anular(self):
         self.__estado = False 
 
     def habilitado(self):

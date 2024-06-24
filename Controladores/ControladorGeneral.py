@@ -27,9 +27,9 @@ class ControladorGeneral():
         ... # Todos los métodos de guardar de los controladores
 
     def menu(self):
-        opcion = None
+        opcion = 0
         while opcion != 9:
-            opcion = VistaGeneral.menu()
+            opcion = VistaGeneral().menu()
             match opcion:
                 case 1:
                     self.cr.menu() # Razas
@@ -50,4 +50,4 @@ class ControladorGeneral():
                 case 9:
                     break # Salir del sistema
                 case _:
-                    ...
+                    "Opción inválida."

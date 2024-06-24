@@ -23,6 +23,10 @@ Especialidad: {self.__especialidad}
     @property
     def especialidad(self):
         return self.__especialidad
+    
+    @especialidad.setter
+    def especialidad(self, especialidad):
+        self.__especialidad = especialidad
 
     @matricula.setter
     def matricula(self, matricula):
@@ -35,4 +39,3 @@ Especialidad: {self.__especialidad}
     @codigo.setter
     def veterinaria(self, codigo):
         self.__codigo = codigo
-    

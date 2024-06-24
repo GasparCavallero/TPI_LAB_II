@@ -10,6 +10,7 @@ class ControladorMascota:
         self.__ControladorPropietario = ControladorPropietario
         self.__ControladorFichaMedica = ControladorFichaMedica
         self.__modelo = Mascota
+        self.__vista = VistaMascota()
         self.__listaMascotas = self.cargar_lista_mascotas()
 
     def cargar_lista_mascotas(self):
@@ -20,8 +21,10 @@ class ControladorMascota:
                 lista.append(self.__modelo(int(codigo), bool(estado), Propietario, Raza, FichaMedica, nombre, fechaNac))
         return lista
     
-    def crear_nueva_mascota(self, propietario):
-        if self.__ControladorPropietario.buscar_propietario_via_codigo(int(propietario)):
+    def crear_nueva_mascota(self):
+        # Pedir propietario y si propietario no existe crear uno
+        codigo_propietario = self.__vista.pedirCodigo("Ingrese el código del propietario de la mascota: ")
+        if self.__ControladorPropietario.buscar_propietario_via_codigo(codigo_propietario):
             propietario = propietario
         else:
             propietario = self.__ControladorPropietario.crear_nuevo_propietario() # Falta crear
@@ -34,49 +37,50 @@ class ControladorMascota:
         self.__ControladorFichaMedica.crear_nueva_fichaMedica(mascota.codigo)
         self.__ControladorPropietario.agregar_mascota(mascota.propietario, str(mascota.codigo))
 
-    def modificar_mascota(self, codigo: int):
+    def modificar_mascota(self):
+        match = False
+        codigo = self.__vista.pedirCodigo("Ingrese el código de la mascota a modificar: ")
         for mascota in self.__listaMascotas:
             if mascota.codigo == codigo:
-                mascota.nombre = input(f"Nuevo nombre para {mascota.nombre}: ") # Modificar por vista
-                mascota.fechaNac = input(f"Nueva fecha de nacimiento: ") # Modificar por vista
-            else:
-                return # Crear excepción/mensaje de error/no encontrado en sección vista
+                match = True
+                nombre, fechaNac = self.__vista.modificarMascota(mascota)
+                mascota.nombre = nombre
+                mascota.fechaNac = fechaNac
+                self.__vista.mostrarCambioExitoso()
+        if match == False:
+            self.__vista.codigoInvalido()
 
     def guardar_mascotas(self):
         with open("Archivos/mascota.txt", "w") as txt:
             for linea in self.__listaMascotas:
                 txt.write(f"{linea.codigo};{linea.estado};{linea.propietario};{linea.raza};{linea.codigo};{linea.nombre};{linea.fechaNac}\n")
 
-
-    def anular_mascota(self, codigo: int):
+    def anular_mascota(self):
+        match = False
+        codigo = self.__vista.pedirCodigo("Ingrese el código de la mascota a anular: ")
         for mascota in self.__listaMascotas:
             if mascota.codigo == codigo:
+                match = True
                 mascota.anular()
-                # Vista de mensaje success
-            else:
-                return # Crear exepción/mensaje de error/no encontrado en sección vista
+                self.__vista.mostrarObjetoAnuladoExitosamente("Mascota")
+        if match == False:
+            self.__vista.codigoInvalido()
 
-    """def codigoaobj_propietario(self, codigoBusqueda: int):
-        ...
-
-    def codigoaobj_fichamedica(self, codigoBusqueda: int):
-        lista = []
-        with open("Archivos/fichamedica.txt", "r") as txt:
-            for linea in txt:
-                codigo, nombre, tipoAnimal = linea.strip().split(";")
-                lista.append(Raza(int(codigo), nombre, tipoAnimal))
-        return buscarObjetoViaCodigo(codigoBusqueda, lista)
-
-    def codigoaobj_raza(self, codigoBusqueda: int):
-        lista = []
-        with open("Archivos/raza.txt", "r") as txt:
-            for linea in txt:
-                codigo, nombre, tipoAnimal = linea.strip().split(";")
-                lista.append(Raza(int(codigo), nombre, tipoAnimal))
-        return buscarObjetoViaCodigo(codigoBusqueda, lista)"""
-    
     def get_lista_mascotas(self):
         return self.__listaMascotas
     
     def menu(self):
-        opcion = VistaMascota.menu()
+        opcion = self.__vista.menu()
+        while opcion != 5:
+            match opcion:
+                case 1:
+                    self.__vista.mostrarLista(self.get_lista_mascotas())
+                case 2:
+                    self.crear_nueva_mascota()
+                case 3:
+                    self.modificar_mascota()
+                case 4:
+                    self.anular_mascota()
+                case 5:
+                    break
+            break
