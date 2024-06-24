@@ -6,7 +6,7 @@ class Raza:
         self.__nombre = nombre
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo} | Estado: {self.__estado} | Nombre: {self.__nombre} | Tipo animal: {self.__tipoAnimal}"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Nombre: {self.__nombre} | Tipo animal: {self.__tipoAnimal}"""
 
     def anular(self):
         self.__estado = False
@@ -41,3 +41,9 @@ class Raza:
     @tipoAnimal.setter
     def tipoAnimal(self, tipoAnimal):
         self.__tipoAnimal = tipoAnimal
+
+    def ishabilitado(self):
+        if self.__estado == True:
+            return "Activa"
+        else:
+            return "Anulada"

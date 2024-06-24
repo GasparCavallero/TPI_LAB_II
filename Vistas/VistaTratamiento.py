@@ -8,7 +8,7 @@ class VistaTratamiento(VistaGeneral):
                 opcion = int(input("""🗂️  Menú de tratamientos 🗂️
 [1] Ver un listado de todos los tratamientos en el sistema
 [2] Modificar un tratamiento
-[3] Crear un nuevo tratamiento # FALTA, DEPENDE DE BUSQUEDA DE MASCOTAS EN MASCOTA
+[3] Crear un nuevo tratamiento
 [4] Eliminar un tratamiento
 [5] Volver
 > """))

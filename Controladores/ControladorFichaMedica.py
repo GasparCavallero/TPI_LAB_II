@@ -86,12 +86,16 @@ class ControladorFichaMedica:
             match opcion:
                 case 1:
                     self.__vista.mostrarLista(self.get_fichas_medicas())
+                    self.__vista.mostrarEnterParaVolver()
                 case 2:
                     self.ver_ficha_medica()
+                    self.__vista.mostrarEnterParaVolver()
                 case 3:
                     self.agregar_vacuna()
+                    self.__vista.mostrarEnterParaVolver()
                 case 4:
                     self.anular_ficha_medica()
+                    self.__vista.mostrarEnterParaVolver()
                 case 5:
                     break
             break

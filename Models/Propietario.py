@@ -7,14 +7,7 @@ class Propietario(Persona):
         self.__codigo = codigo
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {super().estado}
-Nombre: {super().nombre}
-Apellido: {super().apellido}
-Fecha de nacimiento: {super().fechaNac}
-Correo: {super().correo}
-Mascotas: {self.__listaMascotas}
-"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Nombre: {super().nombre} | Apellido: {super().apellido} | Fecha de nacimiento: {super().fechaNac} | Correo: {super().correo} | Mascotas: {self.__listaMascotas}"""
 
     def agregar_mascota(self, Mascota):
         lista = self.__listaMascotas + f",{Mascota}"
@@ -32,4 +25,8 @@ Mascotas: {self.__listaMascotas}
     def veterinaria(self, codigo):
         self.__codigo = codigo
 
-    
+    def ishabilitado(self):
+        if super().estado == True:
+            return "Activo"
+        else:
+            return "Anulado"

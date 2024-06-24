@@ -4,10 +4,11 @@ from utilidades import *
 
 
 class ControladorTratamiento:
-    def __init__(self):
+    def __init__(self, controladorMascota):
         self.__modelo = Tratamiento
         self.__vista = VistaTratamiento()
         self.__listaTratamientos = self.cargar_lista_tratamientos()
+        self.__cm = controladorMascota
 
     def cargar_lista_tratamientos(self):
         lista = []
@@ -18,15 +19,14 @@ class ControladorTratamiento:
         return lista
     
     def crear_nuevo_tratamiento(self):
-        # if controlador.mascota.buscar_mascota: pedir descripcion, crear tratamiento y appendear, else mostrar error
         mascota = self.__vista.pedirCodigo("Ingrese el código de la mascota a la que se le asignará el tratamiento: ")
-        if self.controlador_mascota.buscar_mascota(mascota) == True:
-            descripcion = self.__vista.inputIntNoVacioNoNegativo("Ingrese la descripción del tratamiento: ")
+        if self.__cm.buscar_mascota(mascota):
+            descripcion = self.__vista.inputStringNoVacia("Ingrese la descripción del tratamiento: ")
             tratamiento = self.__modelo(crearCodigo(self.__listaTratamientos), mascota, fechaActual(), descripcion)
             self.__listaTratamientos.append(tratamiento)
+            self.__vista.mostrarCreacionExitosa()
         else:
             self.__vista.codigoInvalido()
-        # quizá haya que appendear a la lista de ficha medica, o quiza directamente quitar la lista de ficha medica y usar este controlador
 
     def get_tratamientos_via_codigo(self, codigo):
         # get todos los tratamientos que matcheen el código, para construir ficha médica

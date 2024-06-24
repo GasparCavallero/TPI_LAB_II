@@ -6,10 +6,7 @@ class Diagnostico:
         self.__mascota = mascota
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Fecha: {self.__fecha}
-Descripción: {self.__descripcion}
-Mascota: {self.__mascota}"""
+        return f"""Codigo: {self.__codigo} | Fecha: {self.__fecha} | Descripción: {self.__descripcion} | Mascota: {self.__mascota}"""
 
     @property
     def tratamiento(self):
@@ -53,3 +50,9 @@ Mascota: {self.__mascota}"""
   
     def agregar_tratamiento(self, Tratamiento):
         self.__tratamiento = Tratamiento
+
+    def ishabilitado(self):
+        if self.__estado == True:
+            return "Activo"
+        else:
+            return "Anulado"

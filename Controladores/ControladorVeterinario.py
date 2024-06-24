@@ -31,6 +31,14 @@ class ControladorVeterinario:
             for linea in self.__listaVeterinarios:
                 txt.write(f"{linea.codigo};{linea.estado};{linea.nombre};{linea.apellido};{linea.fechaNac};{linea.correo};{linea.especialidad}\n")
 
+    def buscar_veterinario(self, codigo):
+        match = False
+        for veterinario in self.__listaVeterinarios:
+            if veterinario.codigo == codigo:
+                return veterinario
+        if match == False:
+            return False
+
     def modificar_veterinario(self):
         match = False
         codigo = self.__vista.pedirCodigo("Ingrese el código del veterinario a modificar: ")

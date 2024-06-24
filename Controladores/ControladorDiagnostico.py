@@ -3,7 +3,8 @@ from Vistas.VistaDiagnostico import VistaDiagnostico
 from utilidades import *
 
 class ControladorDiagnostico:
-    def __init__(self):
+    def __init__(self, controladorMascota):
+        self.__cm = controladorMascota
         self.__modelo = Diagnostico
         self.__vista = VistaDiagnostico()
         self.__listaDiagnosticos = self.cargar_lista_diagnosticos()
@@ -21,12 +22,13 @@ class ControladorDiagnostico:
 
     def crear_nuevo_diagnostico(self):
         mascota = self.__vista.pedirCodigo("Ingrese el código de la mascota a la que se le creará un nuevo diagnóstico: ")
-        # if controlador.mascota.buscar_mascota
-        # entonces mascota = mascota
-        # else self._vista.error y break?
-        descripcion = self.__vista.inputStringNoVacia("Ingrese la descripción del diagnóstico: ")
-        diagnostico = self.__modelo(crearCodigo(self.__listaDiagnosticos), mascota, fechaActual(), descripcion)
-        self.__listaDiagnosticos.append(diagnostico)
+        if self.__cm.buscar_mascota(mascota):
+            mascota = mascota
+            descripcion = self.__vista.inputStringNoVacia("Ingrese la descripción del diagnóstico: ")
+            diagnostico = self.__modelo(crearCodigo(self.__listaDiagnosticos), mascota, fechaActual(), descripcion)
+            self.__listaDiagnosticos.append(diagnostico)
+        else:
+            self.__vista.codigoInvalido()
 
     def get_diagnosticos_via_codigo(self, codigo):
         # get todos los tratamientos que matcheen el código, para construir ficha médica

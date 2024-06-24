@@ -9,14 +9,7 @@ class Mascota:
         self.__fechaNac = fechaNac
         
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {self.__estado}
-Propietario: {self.__propietario}
-Raza: {self.__raza}
-Ficha médica: {self.__fichaMedica}
-Nombre: {self.__nombre}
-Fecha de nacimiento: {self.__fechaNac}"""
-
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Propietario: {self.__propietario} | Raza: {self.__raza} | Ficha médica: {self.__fichaMedica} | Nombre: {self.__nombre} | Fecha de nacimiento: {self.__fechaNac}"""
     @property
     def propietario(self):
         return self.__propietario
@@ -28,8 +21,6 @@ Fecha de nacimiento: {self.__fechaNac}"""
     @property
     def estado(self):
         return self.__estado
-
-
 
     @property
     def raza(self):
@@ -86,5 +77,7 @@ Fecha de nacimiento: {self.__fechaNac}"""
         self.__codigo = codigo
 
     def ishabilitado(self):
-        if self.__estado==True:
-            return True
+        if self.__estado == True:
+            return "Activa"
+        else:
+            return "Anulada"

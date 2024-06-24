@@ -7,7 +7,7 @@ class VistaMascota(VistaGeneral):
             try:
                 opcion = int(input("""🐱 Menú de mascotas 🐱
 [1] Ver un listado de todas las mascotas en el sistema
-[2] Dar de alta una mascota PENDIENTE PORQUE TIENE QUE VER CON PROPIETARIO
+[2] Dar de alta una mascota
 [3] Modificar datos de una mascota existente
 [4] Anular una mascota del sistema
 [5] Volver

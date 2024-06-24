@@ -1,2 +1,3 @@
-1;True;Carlos;Frigo;12/02/2001;car@gmail.com;gil
-2;True;Mirta;Legrand;02/02/1900;mirtalegrand@gmail.com;Historiadora
+1;True;Carlos;Frigo;12/02/2001;car@gmail.com;Medico veterinario general
+2;True;Mirta;Legrand;02/02/1900;mirtalegrand@gmail.com;Quiropracta
+3;True;Miguel;Miguelinos;12/12/1999;miguel@gmail.com;Miguelólogo

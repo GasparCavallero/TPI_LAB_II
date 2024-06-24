@@ -8,12 +8,7 @@ class Consulta:
         self.__fecha = fecha
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {self.__estado}
-Fecha de la consulta: {self.__fecha}
-Veterinario: {self.__veterinario}
-Veterinaria: {self.__veterinaria}
-Descripción: {self.__descripcion}"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Fecha de la consulta: {self.__fecha} | Veterinario: {self.__veterinario} | Veterinaria: {self.__veterinaria} | Descripción: {self.__descripcion}"""
 
     ### Get/Set
 
@@ -81,5 +76,7 @@ Descripción: {self.__descripcion}"""
         self.__estado = False
 
     def ishabilitado(self):
-        if self.__estado==True:
-            return True
+        if self.__estado == True:
+            return "Vigente"
+        else:
+            return "Anulada"

@@ -18,9 +18,9 @@ class ControladorGeneral():
         self.cr = ControladorRaza()
         self.cm = ControladorMascota(self.cp, self.cfm)
         self.cvc = ControladorVacuna()
-        self.ct = ControladorTratamiento()
-        self.cd = ControladorDiagnostico()
-        self.cc = ControladorConsulta()
+        self.ct = ControladorTratamiento(self.cm)
+        self.cd = ControladorDiagnostico(self.cm)
+        self.cc = ControladorConsulta(self.cvt)
         self.menu()
 
     def guardar(self):

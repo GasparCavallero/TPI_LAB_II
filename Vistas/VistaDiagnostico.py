@@ -8,7 +8,7 @@ class VistaDiagnostico(VistaGeneral):
                 opcion = int(input("""📝 Menú de diagnósticos 📝
 [1] Ver el listado de todos los diagnósticos en el sistema
 [2] Modificar un diagnóstico
-[3] Crear un nuevo diagnóstico # FALTA, DEPENDE DE UNA FUNCION DE MASCOTA
+[3] Crear un nuevo diagnóstico
 [4] Eliminar un diagnóstico del sistema
 [5] Volver
 > """))

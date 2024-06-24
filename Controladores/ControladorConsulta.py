@@ -3,7 +3,8 @@ from Vistas.VistaConsulta import VistaConsulta
 from utilidades import *
 
 class ControladorConsulta:
-    def __init__(self):
+    def __init__(self, controladorVeterinario):
+        self.__cvt = controladorVeterinario
         self.__modelo = Consulta
         self.__vista = VistaConsulta()
         self.__listaConsultas = self.cargar_lista_consultas()
@@ -18,10 +19,13 @@ class ControladorConsulta:
 
     def crear_nueva_consulta(self):
         veterinario = self.__vista.pedirCodigo("Ingrese el código del veterinario que realizó la consulta: ")
-        #
-        # descripcion = self.__vista.
-        consulta = self.__modelo(crearCodigo(self.__listaConsultas), True,  veterinario, descripcion, fechaActual())
-        self.__listaConsultas.append(consulta)
+        if self.__cvt.buscar_veterinario(veterinario):
+            descripcion = self.__vista.inputStringNoVacia("Ingrese la descripción de la consulta: ")
+            consulta = self.__modelo(crearCodigo(self.__listaConsultas), True,  veterinario, descripcion, fechaActual())
+            self.__listaConsultas.append(consulta)
+            self.__vista.mostrarCreacionExitosa()
+        else:
+            self.__vista.codigoInvalido()
 
     def eliminar_consulta(self):
         match = False

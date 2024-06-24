@@ -6,10 +6,7 @@ class Tratamiento:
         self.__descripcion = descripcion
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Mascota: {self.__mascota}
-Fecha: {self.__fecha}
-Descripción: {self.__descripcion}"""
+        return f"""Codigo: {self.__codigo} | Mascota: {self.__mascota} | Fecha: {self.__fecha} | Descripción: {self.__descripcion}"""
 
     @property
     def fecha(self):

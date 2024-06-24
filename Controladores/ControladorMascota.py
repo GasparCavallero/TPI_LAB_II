@@ -21,24 +21,30 @@ class ControladorMascota:
                 lista.append(self.__modelo(int(codigo), bool(estado), Propietario, Raza, FichaMedica, nombre, fechaNac))
         return lista
     
-    def buscar_mascota(self):
-        ...
+    def buscar_mascota(self, codigo):
+        match = False
+        for mascota in self.__listaMascotas:
+            if mascota.codigo == codigo:
+                return mascota
+        if match == False:
+            return False
 
     def crear_nueva_mascota(self):
-        # Pedir propietario y si propietario no existe crear uno
         codigo_propietario = self.__vista.pedirCodigo("Ingrese el código del propietario de la mascota: ")
-        if self.__ControladorPropietario.buscar_propietario_via_codigo(codigo_propietario):
-            propietario = propietario
+        if self.__ControladorPropietario.buscar_propietario(codigo_propietario):
+            propietario = codigo_propietario
         else:
-            propietario = self.__ControladorPropietario.crear_nuevo_propietario() # Falta crear
-        raza = input("Código de raza: ") # Reemplazar por vistas
-        nombre = input("Nombre: ") # Reemplazar por vistas
-        fechaNac = input("Fecha de nacimiento formato DD/MM/AAAA: ") # Reemplazar por vistas con validación
+            self.__vista.mostrarMensaje("Propietario no encontrado. Creando un nuevo propietario.")
+            propietario = self.__ControladorPropietario.crear_nuevo_propietario()
+        raza = self.__vista.inputStringNoVacia("Ingrese el código de la raza del animal: ")
+        nombre = self.__vista.inputStringNoVacia("Ingrese el nombre del animal: ") # Reemplazar por vistas
+        fechaNac = self.__vista.inputStringNoVacia("Ingrese la fecha de nacimiento formato DD/MM/AAAA: ") # Reemplazar por vistas con validación
         codigo = crearCodigo(self.__listaMascotas)
         mascota = Mascota(codigo, True, propietario, raza, codigo, nombre, fechaNac)
         self.__listaMascotas.append(self.__modelo(int(codigo), True, propietario, raza, int(codigo), nombre, fechaNac))
         self.__ControladorFichaMedica.crear_nueva_fichaMedica(mascota.codigo)
         self.__ControladorPropietario.agregar_mascota(mascota.propietario, str(mascota.codigo))
+        self.__vista.mostrarCreacionExitosa()
 
     def modificar_mascota(self):
         match = False

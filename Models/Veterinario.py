@@ -7,14 +7,7 @@ class Veterinario(Persona):
         self.__codigo = codigo
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {super().estado}
-Nombre: {super().nombre}
-Apellido: {super().apellido}
-Fecha de nacimiento: {super().fechaNac}
-Correo: {super().correo}
-Especialidad: {self.__especialidad}
-"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Nombre: {super().nombre} | Apellido: {super().apellido} | Fecha de nacimiento: {super().fechaNac} | Correo: {super().correo} | Especialidad: {self.__especialidad}"""
 
     @property
     def matricula(self):
@@ -39,3 +32,9 @@ Especialidad: {self.__especialidad}
     @codigo.setter
     def veterinaria(self, codigo):
         self.__codigo = codigo
+
+    def ishabilitado(self):
+        if super().estado == True:
+            return "Activo"
+        else:
+            return "Anulada"

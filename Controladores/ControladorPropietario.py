@@ -20,10 +20,14 @@ class ControladorPropietario:
             if propietario.codigo == codigo:
                 propietario.agregar_mascota(mascota)
 
-    def buscar_propietario_via_codigo(self, codigo):
+    def buscar_propietario(self, codigo):
+        match = False
         for i in self.__listaPropietarios:
             if i.codigo == codigo:
+                match = True
                 return i
+        if match == False:
+            return False
 
     def crear_nuevo_propietario(self):
         nombre, apellido, fechaNac, correo = self.__vista.crearPropietario()
@@ -71,12 +75,16 @@ class ControladorPropietario:
             match opcion:
                 case 1:
                     self.__vista.mostrarLista(self.get_lista_propietarios())
+                    self.__vista.mostrarEnterParaVolver()
                 case 2:
                     self.crear_nuevo_propietario()
+                    self.__vista.mostrarEnterParaVolver()
                 case 3:
                     self.modificar_propietario()
+                    self.__vista.mostrarEnterParaVolver()
                 case 4:
                     self.anular_propietario()
+                    self.__vista.mostrarEnterParaVolver()
                 case 5:
                     break
             break

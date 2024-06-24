@@ -6,11 +6,7 @@ class FichaMedica:
         self.__listaVacunas = listaVacunas
 
     def __str__(self):
-        return f"""Codigo: {self.__codigo}
-Estado: {self.__estado}
-Mascota: {self.__mascota}
-Vacunas: {self.__listaVacunas}
-"""
+        return f"""Codigo: {self.__codigo} | Estado: {self.ishabilitado()} | Mascota: {self.__mascota} | Vacunas: {self.__listaVacunas}"""
 
     @property
     def listaVacunas(self):
@@ -71,6 +67,8 @@ Vacunas: {self.__listaVacunas}
     def veterinaria(self, codigo):
         self.__codigo = codigo
 
-    def habilitado(self):
+    def ishabilitado(self):
         if self.__estado == True:
-            return True
+            return "Habilitada"
+        else:
+            return "Deshabilitada"

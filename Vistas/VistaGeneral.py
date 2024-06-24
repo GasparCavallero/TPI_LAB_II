@@ -45,6 +45,9 @@ class VistaGeneral():
     def mostrarLista(self, lista):
         [print(c) for c in lista]
 
+    def mostrarMensaje(self, mensaje):
+        print(mensaje)
+
     def mostrarErrorStrEnInt(self):
         self.limpiarPantalla()
         print("Solo permitidos valores numéricos. Intente nuevamente.")
